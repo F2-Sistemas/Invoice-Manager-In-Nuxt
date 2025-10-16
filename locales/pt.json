@@ -1,0 +1,67 @@
+{
+    "nav": {
+        "home": "Início",
+        "portfolio": "Portfólio",
+        "contact": "Contato"
+    },
+    "hero": {
+        "title": "Seu Parceiro no Sucesso da Comunidade!",
+        "subtitle": "Marketing, Design e Serviços Web para Organizações Judaicas",
+        "description": "Fortalecendo organizações comunitárias judaicas através de marketing, design, web e inovação estratégica.",
+        "cta": "Agende uma chamada"
+    },
+    "features": {
+        "title": "Construindo Comunidade Através da Criatividade",
+        "description": "Amplificando as vozes organizacionais e conectando com o público de forma significativa.",
+        "team": {
+            "title": "Equipe Talentosa e Dedicada",
+            "description": "Acesso a equipe de marketing, designers e editores de vídeo sem custos de contratação"
+        },
+        "model": {
+            "title": "Modelo Creative Kibbutz",
+            "description": "Soluções personalizadas contínuas com flexibilidade e consistência"
+        },
+        "ready": {
+            "title": "Prontos para Começar",
+            "description": "Equipe experiente preparada para entregar imediatamente"
+        }
+    },
+    "cta": {
+        "title": "Vamos nos conectar!",
+        "description": "Entre em contato para agendar uma consulta inicial"
+    },
+    "portfolio": {
+        "title": "Nossos Cases de Sucesso",
+        "description": "Projetos personalizados para organizações comunitárias",
+        "viewCase": "Ver Case"
+    },
+    "contact": {
+        "title": "Fale Conosco",
+        "form": {
+            "name": "Nome",
+            "email": "E-mail",
+            "phone": "Telefone",
+            "message": "Mensagem",
+            "send": "Enviar"
+        }
+    },
+    "case": {
+        "aboutClient": "Sobre o Cliente",
+        "problem": "Pedido do Cliente",
+        "solution": "Solução Proposta",
+        "results": "Resultados Alcançados",
+        "feedback": "Feedback sobre a Parceria",
+        "scheduleContact": {
+            "title": "Agende um contato com nosso especialista",
+            "description": "Preencha seus dados ao lado com o serviço que você precisa, data e horário de preferência e entraremos em contato para agendar um horário.",
+            "service": "Serviço",
+            "date": "Data Preferida",
+            "time": "Horário Preferido",
+            "submit": "Agendar Contato"
+        }
+    },
+    "footer": {
+        "newsletter": "Assine nossos e-mails",
+        "privacy": "Política de Privacidade"
+    }
+}

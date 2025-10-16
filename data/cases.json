@@ -1,0 +1,224 @@
+[
+    {
+        "id": 1,
+        "slug": "lchaim-adult-day-centre-trifold",
+        "title": {
+            "en": "L'Chaim Adult Day Centre Trifold",
+            "pt": "Folder L'Chaim Adult Day Centre"
+        },
+        "category": {
+            "en": "Print Design",
+            "pt": "Design Gráfico"
+        },
+        "image": "/images/cases/lchaim-trifold.jpg",
+        "description": {
+            "en": "Brochure design for L'Chaim Adult Day Centre",
+            "pt": "Design de folder para L'Chaim Adult Day Centre"
+        },
+        "aboutClient": {
+            "en": "L'Chaim Adult Day Centre is a community organization dedicated to providing care and activities for seniors in the Jewish community.",
+            "pt": "L'Chaim Adult Day Centre é uma organização comunitária dedicada a fornecer cuidados e atividades para idosos na comunidade judaica."
+        },
+        "problem": {
+            "en": "The center needed an informative and attractive brochure to communicate their services to families and potential clients.",
+            "pt": "O centro precisava de um folder informativo e atraente para comunicar seus serviços às famílias e potenciais clientes."
+        },
+        "solution": {
+            "en": "We created a professional trifold brochure with clear sections highlighting services, activities, and contact information, using warm colors and engaging imagery.",
+            "pt": "Criamos um folder profissional com seções claras destacando serviços, atividades e informações de contato, usando cores quentes e imagens envolventes."
+        },
+        "results": {
+            "en": "The brochure increased inquiries by 40% and became a key marketing tool for the center.",
+            "pt": "O folder aumentou as consultas em 40% e se tornou uma ferramenta de marketing essencial para o centro."
+        },
+        "feedback": {
+            "en": "\"Creative Kibbutz understood our mission and created a brochure that truly represents who we are.\"",
+            "pt": "\"Creative Kibbutz entendeu nossa missão e criou um folder que realmente representa quem somos.\""
+        }
+    },
+    {
+        "id": 2,
+        "slug": "jcc-vancouver-annual-campaign",
+        "title": {
+            "en": "JCC of Greater Vancouver - Annual Campaign",
+            "pt": "JCC de Greater Vancouver - Campanha Anual"
+        },
+        "category": {
+            "en": "Marketing Campaign",
+            "pt": "Campanha de Marketing"
+        },
+        "image": "/images/cases/jcc-campaign.jpg",
+        "description": {
+            "en": "Complete marketing campaign for JCC's annual fundraising",
+            "pt": "Campanha de marketing completa para arrecadação anual do JCC"
+        },
+        "aboutClient": {
+            "en": "The Jewish Community Centre of Greater Vancouver is a hub for community activities, education, and cultural events.",
+            "pt": "O Centro Comunitário Judaico de Greater Vancouver é um hub para atividades comunitárias, educação e eventos culturais."
+        },
+        "problem": {
+            "en": "The JCC needed a comprehensive campaign to engage the community and increase donations for their annual fundraising initiative.",
+            "pt": "O JCC precisava de uma campanha abrangente para engajar a comunidade e aumentar as doações para sua iniciativa anual de arrecadação."
+        },
+        "solution": {
+            "en": "We developed a multi-channel campaign including social media, email marketing, print materials, and video content, all aligned with a compelling narrative.",
+            "pt": "Desenvolvemos uma campanha multicanal incluindo redes sociais, email marketing, materiais impressos e conteúdo em vídeo, todos alinhados com uma narrativa convincente."
+        },
+        "results": {
+            "en": "The campaign exceeded fundraising goals by 25% and increased community engagement by 60%.",
+            "pt": "A campanha superou as metas de arrecadação em 25% e aumentou o engajamento da comunidade em 60%."
+        },
+        "feedback": {
+            "en": "\"The Creative Kibbutz team went above and beyond. Their strategic approach made all the difference.\"",
+            "pt": "\"A equipe do Creative Kibbutz foi além. Sua abordagem estratégica fez toda a diferença.\""
+        }
+    },
+    {
+        "id": 3,
+        "slug": "jcc-social-media",
+        "title": {
+            "en": "JCC - Social Media",
+            "pt": "JCC - Redes Sociais"
+        },
+        "category": {
+            "en": "Social Media",
+            "pt": "Redes Sociais"
+        },
+        "image": "/images/cases/jcc-social.jpg",
+        "description": {
+            "en": "Social media content and design for JCC",
+            "pt": "Conteúdo e design de redes sociais para JCC"
+        },
+        "aboutClient": {
+            "en": "The Jewish Community Centre needed consistent and engaging social media presence to connect with their diverse community.",
+            "pt": "O Centro Comunitário Judaico precisava de presença consistente e envolvente nas redes sociais para se conectar com sua comunidade diversa."
+        },
+        "problem": {
+            "en": "Their social media posts lacked consistency and professional design, resulting in low engagement rates.",
+            "pt": "Suas postagens nas redes sociais careciam de consistência e design profissional, resultando em baixas taxas de engajamento."
+        },
+        "solution": {
+            "en": "We created a content calendar and design templates that maintained brand consistency while allowing for varied, engaging posts across platforms.",
+            "pt": "Criamos um calendário de conteúdo e templates de design que mantinham a consistência da marca enquanto permitiam posts variados e envolventes em todas as plataformas."
+        },
+        "results": {
+            "en": "Social media engagement increased by 150% within three months, with follower growth of 80%.",
+            "pt": "O engajamento nas redes sociais aumentou 150% em três meses, com crescimento de seguidores de 80%."
+        },
+        "feedback": {
+            "en": "\"Our social media has never looked better. The Creative Kibbutz team really gets our audience.\"",
+            "pt": "\"Nossas redes sociais nunca estiveram melhores. A equipe do Creative Kibbutz realmente entende nosso público.\""
+        }
+    },
+    {
+        "id": 4,
+        "slug": "liessin-high-school-logo",
+        "title": {
+            "en": "Liessin High School - New Logo",
+            "pt": "Liessin High School - Nova Logo"
+        },
+        "category": {
+            "en": "Branding",
+            "pt": "Branding"
+        },
+        "image": "/images/cases/liessin-logo.jpg",
+        "description": {
+            "en": "Logo design and branding for Liessin High School",
+            "pt": "Design de logo e branding para Liessin High School"
+        },
+        "aboutClient": {
+            "en": "Liessin High School is a prestigious educational institution seeking to modernize their brand while honoring their heritage.",
+            "pt": "Liessin High School é uma instituição educacional prestigiosa buscando modernizar sua marca enquanto honra sua herança."
+        },
+        "problem": {
+            "en": "The school's outdated logo didn't reflect their modern educational approach and was difficult to reproduce across various media.",
+            "pt": "A logo desatualizada da escola não refletia sua abordagem educacional moderna e era difícil de reproduzir em várias mídias."
+        },
+        "solution": {
+            "en": "We designed a contemporary logo that incorporated traditional elements, with a versatile design system that works across all applications.",
+            "pt": "Projetamos uma logo contemporânea que incorporou elementos tradicionais, com um sistema de design versátil que funciona em todas as aplicações."
+        },
+        "results": {
+            "en": "The new logo was enthusiastically received by students, parents, and staff, and strengthened the school's brand identity.",
+            "pt": "A nova logo foi entusiasticamente recebida por alunos, pais e funcionários, e fortaleceu a identidade da marca da escola."
+        },
+        "feedback": {
+            "en": "\"Creative Kibbutz captured the essence of our school perfectly. The logo honors our past while looking to the future.\"",
+            "pt": "\"Creative Kibbutz capturou a essência de nossa escola perfeitamente. A logo honra nosso passado enquanto olha para o futuro.\""
+        }
+    },
+    {
+        "id": 5,
+        "slug": "jcc-sports-dinner-social",
+        "title": {
+            "en": "JCC Sports Dinner - Social Media",
+            "pt": "JCC Jantar Esportivo - Redes Sociais"
+        },
+        "category": {
+            "en": "Event Marketing",
+            "pt": "Marketing de Eventos"
+        },
+        "image": "/images/cases/jcc-sports-dinner.jpg",
+        "description": {
+            "en": "Event-related social media graphics for JCC Sports Dinner",
+            "pt": "Gráficos de redes sociais para Jantar Esportivo do JCC"
+        },
+        "aboutClient": {
+            "en": "The JCC Sports Dinner is an annual fundraising event celebrating athletic achievement in the community.",
+            "pt": "O Jantar Esportivo do JCC é um evento anual de arrecadação celebrando conquistas atléticas na comunidade."
+        },
+        "problem": {
+            "en": "The event needed promotional materials that would generate excitement and drive ticket sales through social media.",
+            "pt": "O evento precisava de materiais promocionais que gerassem entusiasmo e impulsionassem a venda de ingressos através das redes sociais."
+        },
+        "solution": {
+            "en": "We created a series of dynamic social media graphics and a promotional video that highlighted past events and featured testimonials.",
+            "pt": "Criamos uma série de gráficos dinâmicos de redes sociais e um vídeo promocional que destacou eventos passados e apresentou depoimentos."
+        },
+        "results": {
+            "en": "The event sold out two weeks earlier than previous years, with social media reach increasing by 200%.",
+            "pt": "O evento esgotou duas semanas antes do que nos anos anteriores, com alcance nas redes sociais aumentando em 200%."
+        },
+        "feedback": {
+            "en": "\"The promotional materials were outstanding. We've never had this level of engagement before the event.\"",
+            "pt": "\"Os materiais promocionais foram excelentes. Nunca tivemos esse nível de engajamento antes do evento.\""
+        }
+    },
+    {
+        "id": 6,
+        "slug": "camp-shalom-apparel",
+        "title": {
+            "en": "Camp Shalom - Shirts and Hoodie",
+            "pt": "Camp Shalom - Camisetas e Moletom"
+        },
+        "category": {
+            "en": "Apparel Design",
+            "pt": "Design de Vestuário"
+        },
+        "image": "/images/cases/camp-shalom-apparel.jpg",
+        "description": {
+            "en": "Apparel design for Camp Shalom",
+            "pt": "Design de vestuário para Camp Shalom"
+        },
+        "aboutClient": {
+            "en": "Camp Shalom is a beloved summer camp that wanted to create memorable merchandise for campers and staff.",
+            "pt": "Camp Shalom é um acampamento de verão querido que queria criar mercadorias memoráveis para campistas e funcionários."
+        },
+        "problem": {
+            "en": "The camp needed fresh, appealing designs that would resonate with both children and teenagers while building camp pride.",
+            "pt": "O acampamento precisava de designs frescos e atraentes que ressoassem tanto com crianças quanto adolescentes enquanto construíam orgulho do acampamento."
+        },
+        "solution": {
+            "en": "We developed a collection of designs featuring playful graphics and camp mottos, available on various apparel items.",
+            "pt": "Desenvolvemos uma coleção de designs com gráficos divertidos e lemas do acampamento, disponíveis em vários itens de vestuário."
+        },
+        "results": {
+            "en": "Merchandise sales increased by 75%, and the designs became a source of camp identity and nostalgia for years to come.",
+            "pt": "As vendas de mercadorias aumentaram 75%, e os designs se tornaram uma fonte de identidade e nostalgia do acampamento por anos."
+        },
+        "feedback": {
+            "en": "\"The kids love the new designs! These have become must-have items for every camper.\"",
+            "pt": "\"As crianças adoram os novos designs! Estes se tornaram itens obrigatórios para cada campista.\""
+        }
+    }
+]
