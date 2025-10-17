@@ -29,7 +29,7 @@
                         {{ $t('nav.contact') }}
                     </NuxtLink>
                 </nav>
-                <div class="">
+                <div class="w-24 text-gray-700 hover:text-primary-600 transition-colors">
                     <LanguageSwitcher />
                 </div>
 
