@@ -19,6 +19,17 @@
 
         <!-- Case Image -->
         <section class="py-12 bg-gray-50">
+            <!-- Back to Portfolio -->
+            <section class="pb-8">
+                <UContainer>
+                    <div class="text-center">
+                        <UButton to="/pages/portfolio" variant="ghost" icon="i-heroicons-arrow-left">
+                            {{ $t('nav.portfolio') }}
+                        </UButton>
+                    </div>
+                </UContainer>
+            </section>
+
             <UContainer>
                 <div
                     class="aspect-video bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden max-w-5xl mx-auto"
@@ -33,7 +44,7 @@
             <UContainer>
                 <div class="max-w-4xl mx-auto space-y-12">
                     <!-- About Client -->
-                    <div>
+                    <div class="mb-8">
                         <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
                             <UIcon name="i-heroicons-building-office-2" class="text-primary-600" />
                             {{ $t('case.aboutClient') }}
@@ -46,7 +57,7 @@
                     </div>
 
                     <!-- Problem -->
-                    <div>
+                    <div class="mb-8">
                         <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
                             <UIcon name="i-heroicons-exclamation-circle" class="text-primary-600" />
                             {{ $t('case.problem') }}
@@ -59,7 +70,7 @@
                     </div>
 
                     <!-- Solution -->
-                    <div>
+                    <div class="mb-8">
                         <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
                             <UIcon name="i-heroicons-light-bulb" class="text-primary-600" />
                             {{ $t('case.solution') }}
@@ -72,7 +83,7 @@
                     </div>
 
                     <!-- Results -->
-                    <div>
+                    <div class="mb-8">
                         <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
                             <UIcon name="i-heroicons-chart-bar" class="text-primary-600" />
                             {{ $t('case.results') }}
@@ -85,7 +96,7 @@
                     </div>
 
                     <!-- Feedback -->
-                    <div>
+                    <div class="mb-8">
                         <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
                             <UIcon name="i-heroicons-chat-bubble-left-right" class="text-primary-600" />
                             {{ $t('case.feedback') }}
@@ -131,6 +142,7 @@
                                                 v-model="scheduleForm.name"
                                                 icon="i-heroicons-user"
                                                 size="lg"
+                                                :class="['w-full']"
                                                 placeholder="John Doe"
                                             />
                                         </UFormGroup>
@@ -141,6 +153,7 @@
                                                 type="email"
                                                 icon="i-heroicons-envelope"
                                                 size="lg"
+                                                :class="['w-full']"
                                                 placeholder="john@example.com"
                                             />
                                         </UFormGroup>
@@ -151,6 +164,7 @@
                                                 type="tel"
                                                 icon="i-heroicons-phone"
                                                 size="lg"
+                                                :class="['w-full']"
                                                 placeholder="+1 (555) 123-4567"
                                             />
                                         </UFormGroup>
@@ -160,6 +174,7 @@
                                                 v-model="scheduleForm.service"
                                                 :options="serviceOptions"
                                                 size="lg"
+                                                :class="['w-full']"
                                                 placeholder="Select a service"
                                             >
                                                 <template #leading>
@@ -183,6 +198,7 @@
                                                 type="date"
                                                 icon="i-heroicons-calendar"
                                                 size="lg"
+                                                :class="['w-full']"
                                                 :min="minDate"
                                             />
                                         </UFormGroup>
@@ -192,6 +208,7 @@
                                                 v-model="scheduleForm.preferredTime"
                                                 :options="timeSlots"
                                                 size="lg"
+                                                :class="['w-full']"
                                                 placeholder="Select a time"
                                             >
                                                 <template #leading>
@@ -213,6 +230,7 @@
                                             v-model="scheduleForm.message"
                                             :rows="5"
                                             size="lg"
+                                            :class="['w-full']"
                                             placeholder="Tell us more about your project..."
                                         />
                                     </UFormGroup>
@@ -277,18 +295,18 @@
 </template>
 
 <script setup lang="ts">
-import { z } from 'zod'
+import { z } from 'zod';
 
-const route = useRoute()
-const { locale } = useI18n()
-const { t } = useI18n()
-const toast = useToast()
+const route = useRoute();
+const { locale } = useI18n();
+const { t } = useI18n();
+const toast = useToast();
 
-const casesData = await import('~/data/cases.json').then((m) => m.default)
+const casesData = await import('~/data/cases.json').then((m) => m.default);
 
 const caseData = computed(() => {
-    return casesData.find((c) => c.slug === route.params.slug)
-})
+    return casesData.find((c) => c.slug === route.params.slug);
+});
 
 // Form Schema with Zod validation
 const formSchema = z.object({
@@ -299,7 +317,7 @@ const formSchema = z.object({
     preferredDate: z.string().optional(),
     preferredTime: z.string().optional(),
     message: z.string().optional(),
-})
+});
 
 const scheduleForm = ref({
     name: '',
@@ -309,9 +327,9 @@ const scheduleForm = ref({
     preferredDate: '',
     preferredTime: '',
     message: '',
-})
+});
 
-const isSubmitting = ref(false)
+const isSubmitting = ref(false);
 
 // Service options
 const serviceOptions = [
@@ -325,7 +343,7 @@ const serviceOptions = [
     'Video Production',
     'Consultation',
     'Other',
-]
+];
 
 // Time slots
 const timeSlots = [
@@ -338,20 +356,20 @@ const timeSlots = [
     '03:00 PM',
     '04:00 PM',
     '05:00 PM',
-]
+];
 
 // Min date (today)
 const minDate = computed(() => {
-    const today = new Date()
-    return today.toISOString().split('T')[0]
-})
+    const today = new Date();
+    return today.toISOString().split('T')[0];
+});
 
 const submitSchedule = async (event: any) => {
-    isSubmitting.value = true
+    isSubmitting.value = true;
 
     try {
         // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1500))
+        await new Promise((resolve) => setTimeout(resolve, 1500));
 
         toast.add({
             title: t('case.scheduleContact.submit') + ' ✓',
@@ -359,7 +377,7 @@ const submitSchedule = async (event: any) => {
             color: 'success',
             icon: 'i-heroicons-check-circle',
             timeout: 5000,
-        })
+        });
 
         // Reset form
         scheduleForm.value = {
@@ -370,21 +388,21 @@ const submitSchedule = async (event: any) => {
             preferredDate: '',
             preferredTime: '',
             message: '',
-        }
+        };
     } catch (error) {
         toast.add({
             title: 'Error',
             description: 'Something went wrong. Please try again or contact us directly.',
             color: 'error',
             icon: 'i-heroicons-exclamation-circle',
-        })
+        });
     } finally {
-        isSubmitting.value = false
+        isSubmitting.value = false;
     }
-}
+};
 
 useHead({
     title: caseData.value ? `${caseData.value.title[locale.value]} - Creative Kibbutz` : 'Case Not Found',
     meta: [{ name: 'description', content: caseData.value?.description[locale.value] || '' }],
-})
+});
 </script>
