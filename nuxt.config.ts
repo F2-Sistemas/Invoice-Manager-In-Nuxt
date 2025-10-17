@@ -8,6 +8,12 @@ export default defineNuxtConfig({
 
     css: ['~/assets/css/main.css'],
 
+    runtimeConfig: {
+        public: {
+            shopEnabled: true, // Set to false to disable shop
+        },
+    },
+
     modules: [
         '@nuxt/ui',
         '@nuxtjs/i18n',
@@ -28,7 +34,8 @@ export default defineNuxtConfig({
                 file: 'pt.json',
             },
         ],
-        langDir: 'locales',
+        // langDir: 'locales',
+        langDir: 'i18n/locales',
         defaultLocale: 'en',
         strategy: 'no_prefix',
         detectBrowserLanguage: {

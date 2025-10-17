@@ -22,10 +22,10 @@ const value = ref(
 );
 
 const changed = (ev: any) => {
-    switchLocalePath(value.value?.code || 'en')
+    switchLocalePath(value.value?.code || 'en');
 };
 </script>
 
 <template>
-    <USelectMenu v-model="value" :items="availableLocales" @change="changed" />
+    <USelect v-model="value" :items="availableLocales" @change="changed" />
 </template>

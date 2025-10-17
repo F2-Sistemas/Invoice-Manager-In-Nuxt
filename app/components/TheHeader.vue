@@ -11,10 +11,16 @@
                     <NuxtLink to="/pages/portfolio" class="text-gray-700 hover:text-primary-600 transition-colors">
                         {{ $t('nav.portfolio') }}
                     </NuxtLink>
+                    <NuxtLink
+                        v-if="shopEnabled"
+                        to="/shop"
+                        class="text-gray-700 hover:text-primary-600 transition-colors"
+                    >
+                        {{ $t('shop.title') }}
+                    </NuxtLink>
                     <NuxtLink to="/pages/contact" class="text-gray-700 hover:text-primary-600 transition-colors">
                         {{ $t('nav.contact') }}
                     </NuxtLink>
-
                 </nav>
                 <div class="">
                     <LanguageSwitcher />
@@ -46,14 +52,21 @@
                         {{ $t('nav.portfolio') }}
                     </NuxtLink>
                     <NuxtLink
+                        v-if="shopEnabled"
+                        to="/shop"
+                        class="text-gray-700 hover:text-primary-600 transition-colors"
+                        @click="isMobileMenuOpen = false"
+                    >
+                        {{ $t('shop.title') }}
+                    </NuxtLink>
+                    <NuxtLink
                         to="/pages/contact"
                         class="text-gray-700 hover:text-primary-600 transition-colors"
                         @click="isMobileMenuOpen = false"
                     >
                         {{ $t('nav.contact') }}
                     </NuxtLink>
-                    <!-- <LanguageSwitcher /> -->
-                    <LanguageSwitcherV1 />
+                    <LanguageSwitcher />
                 </nav>
             </div>
         </UContainer>
@@ -62,4 +75,6 @@
 
 <script setup lang="ts">
 const isMobileMenuOpen = ref(false);
+const config = useRuntimeConfig();
+const shopEnabled = computed(() => config.public.shopEnabled);
 </script>

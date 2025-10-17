@@ -7,8 +7,8 @@ Modern website for Creative Kibbutz built with Nuxt 4 + NuxtUI.
 - **Nuxt 4** with Composition API
 - **NuxtUI** for modern, accessible components
 - **Bilingual Support** (English/Portuguese) with i18n
-  - Language preference saved in cookie and localStorage
-  - Easy language switcher in header
+    - Language preference saved in cookie and localStorage
+    - Easy language switcher in header
 - **JSON-based Content** - All content stored in JSON files for easy management
 - **Responsive Design** - Mobile-first approach with Tailwind CSS
 - **Modern Stack** - Vue 3, TypeScript, Vite
@@ -80,6 +80,7 @@ npm run preview
 ### Site Configuration
 
 Edit `data/site-config.json` to update:
+
 - Site contact information
 - Social media links
 - Payment methods
@@ -87,6 +88,7 @@ Edit `data/site-config.json` to update:
 ### Cases (Portfolio)
 
 Edit `data/cases.json` to add/update portfolio cases. Each case includes:
+
 - Bilingual title and description
 - Category
 - About the client
@@ -98,6 +100,7 @@ Edit `data/cases.json` to add/update portfolio cases. Each case includes:
 ### Translations
 
 Edit translation files in `i18n/locales/`:
+
 - `en.json` - English translations
 - `pt.json` - Portuguese translations
 

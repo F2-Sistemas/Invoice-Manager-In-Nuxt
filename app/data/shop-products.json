@@ -1,0 +1,198 @@
+[
+    {
+        "id": 1,
+        "slug": "custom-tshirt-design",
+        "name": {
+            "en": "Custom T-Shirt Design",
+            "pt": "Design de Camiseta Personalizada"
+        },
+        "description": {
+            "en": "Professional t-shirt design service with unlimited revisions. Perfect for camps, events, and organization branding.",
+            "pt": "Serviço de design profissional de camisetas com revisões ilimitadas. Perfeito para acampamentos, eventos e branding de organizações."
+        },
+        "fullDescription": {
+            "en": "Our custom t-shirt design service includes:\n- Professional graphic design\n- Up to 3 design concepts\n- Unlimited revisions\n- Print-ready files\n- Multiple file formats (AI, PDF, PNG)\n- Design consultation",
+            "pt": "Nosso serviço de design de camiseta personalizada inclui:\n- Design gráfico profissional\n- Até 3 conceitos de design\n- Revisões ilimitadas\n- Arquivos prontos para impressão\n- Múltiplos formatos de arquivo (AI, PDF, PNG)\n- Consultoria de design"
+        },
+        "price": 299,
+        "currency": "USD",
+        "categoryId": 1,
+        "categorySlug": "apparel",
+        "images": ["/images/shop/products/tshirt-1.jpg", "/images/shop/products/tshirt-2.jpg"],
+        "featured": true,
+        "inStock": true,
+        "tags": ["design", "apparel", "custom"]
+    },
+    {
+        "id": 2,
+        "slug": "event-poster-package",
+        "name": {
+            "en": "Event Poster Design Package",
+            "pt": "Pacote de Design de Pôster para Eventos"
+        },
+        "description": {
+            "en": "Complete poster design package for your next event. Includes digital and print-ready versions.",
+            "pt": "Pacote completo de design de pôster para seu próximo evento. Inclui versões digitais e prontas para impressão."
+        },
+        "fullDescription": {
+            "en": "Transform your event promotion with our professional poster design package:\n- Custom poster design (18x24 inches)\n- Digital version for social media\n- Print-ready PDF\n- 2 design concepts\n- 3 rounds of revisions\n- Fast turnaround (3-5 business days)",
+            "pt": "Transforme a promoção do seu evento com nosso pacote profissional de design de pôster:\n- Design de pôster personalizado (18x24 polegadas)\n- Versão digital para redes sociais\n- PDF pronto para impressão\n- 2 conceitos de design\n- 3 rodadas de revisões\n- Entrega rápida (3-5 dias úteis)"
+        },
+        "price": 199,
+        "currency": "USD",
+        "categoryId": 2,
+        "categorySlug": "print-materials",
+        "images": ["/images/shop/products/poster-1.jpg"],
+        "featured": true,
+        "inStock": true,
+        "tags": ["design", "print", "event"]
+    },
+    {
+        "id": 3,
+        "slug": "social-media-template-bundle",
+        "name": {
+            "en": "Social Media Template Bundle",
+            "pt": "Pacote de Templates para Redes Sociais"
+        },
+        "description": {
+            "en": "50+ customizable social media templates for Instagram, Facebook, and more.",
+            "pt": "Mais de 50 templates personalizáveis para Instagram, Facebook e muito mais."
+        },
+        "fullDescription": {
+            "en": "Elevate your social media presence with our comprehensive template bundle:\n- 50+ professionally designed templates\n- Instagram posts, stories, and reels\n- Facebook posts and covers\n- Fully customizable in Canva\n- Commercial license included\n- Regular updates with new templates",
+            "pt": "Eleve sua presença nas redes sociais com nosso pacote abrangente de templates:\n- Mais de 50 templates profissionalmente desenhados\n- Posts, stories e reels do Instagram\n- Posts e capas do Facebook\n- Totalmente personalizável no Canva\n- Licença comercial incluída\n- Atualizações regulares com novos templates"
+        },
+        "price": 149,
+        "currency": "USD",
+        "categoryId": 3,
+        "categorySlug": "digital-templates",
+        "images": [
+            "/images/shop/products/templates-1.jpg",
+            "/images/shop/products/templates-2.jpg",
+            "/images/shop/products/templates-3.jpg"
+        ],
+        "featured": true,
+        "inStock": true,
+        "tags": ["digital", "social-media", "templates"]
+    },
+    {
+        "id": 4,
+        "slug": "brochure-design-service",
+        "name": {
+            "en": "Trifold Brochure Design",
+            "pt": "Design de Folder Trifold"
+        },
+        "description": {
+            "en": "Professional trifold brochure design to showcase your organization's services.",
+            "pt": "Design profissional de folder trifold para mostrar os serviços da sua organização."
+        },
+        "fullDescription": {
+            "en": "Get a stunning trifold brochure that tells your story:\n- Professional copywriting assistance\n- Custom layout and design\n- High-resolution images\n- Print-ready files\n- 2 design concepts\n- Unlimited revisions",
+            "pt": "Obtenha um folder trifold impressionante que conta sua história:\n- Assistência profissional de redação\n- Layout e design personalizados\n- Imagens em alta resolução\n- Arquivos prontos para impressão\n- 2 conceitos de design\n- Revisões ilimitadas"
+        },
+        "price": 249,
+        "currency": "USD",
+        "categoryId": 2,
+        "categorySlug": "print-materials",
+        "images": ["/images/shop/products/brochure-1.jpg"],
+        "featured": false,
+        "inStock": true,
+        "tags": ["design", "print", "brochure"]
+    },
+    {
+        "id": 5,
+        "slug": "event-branding-kit",
+        "name": {
+            "en": "Complete Event Branding Kit",
+            "pt": "Kit Completo de Branding para Eventos"
+        },
+        "description": {
+            "en": "Everything you need to brand your event professionally from start to finish.",
+            "pt": "Tudo que você precisa para marcar seu evento profissionalmente do início ao fim."
+        },
+        "fullDescription": {
+            "en": "Make your event unforgettable with our complete branding kit:\n- Event logo design\n- Poster and flyer designs\n- Social media graphics\n- Email header design\n- Name badge template\n- Banner design\n- Signage templates\n- Brand guidelines document",
+            "pt": "Torne seu evento inesquecível com nosso kit completo de branding:\n- Design de logo do evento\n- Designs de pôster e panfleto\n- Gráficos para redes sociais\n- Design de cabeçalho de e-mail\n- Template de crachá\n- Design de banner\n- Templates de sinalização\n- Documento de diretrizes da marca"
+        },
+        "price": 599,
+        "currency": "USD",
+        "categoryId": 4,
+        "categorySlug": "event-materials",
+        "images": ["/images/shop/products/event-kit-1.jpg", "/images/shop/products/event-kit-2.jpg"],
+        "featured": true,
+        "inStock": true,
+        "tags": ["branding", "event", "complete-kit"]
+    },
+    {
+        "id": 6,
+        "slug": "logo-design-service",
+        "name": {
+            "en": "Professional Logo Design",
+            "pt": "Design Profissional de Logo"
+        },
+        "description": {
+            "en": "Get a unique, memorable logo that represents your organization perfectly.",
+            "pt": "Obtenha uma logo única e memorável que representa perfeitamente sua organização."
+        },
+        "fullDescription": {
+            "en": "Establish your brand identity with a professional logo:\n- 3 unique logo concepts\n- Unlimited revisions\n- Multiple file formats\n- Color and black & white versions\n- Brand guidelines\n- Social media profile versions\n- Commercial rights included",
+            "pt": "Estabeleça sua identidade de marca com uma logo profissional:\n- 3 conceitos únicos de logo\n- Revisões ilimitadas\n- Múltiplos formatos de arquivo\n- Versões coloridas e preto e branco\n- Diretrizes da marca\n- Versões para perfis de redes sociais\n- Direitos comerciais incluídos"
+        },
+        "price": 399,
+        "currency": "USD",
+        "categoryId": 1,
+        "categorySlug": "apparel",
+        "images": ["/images/shop/products/logo-1.jpg"],
+        "featured": false,
+        "inStock": true,
+        "tags": ["design", "branding", "logo"]
+    },
+    {
+        "id": 7,
+        "slug": "hoodie-design-package",
+        "name": {
+            "en": "Custom Hoodie Design",
+            "pt": "Design de Moletom Personalizado"
+        },
+        "description": {
+            "en": "Cozy and stylish hoodie designs for your organization or event.",
+            "pt": "Designs de moletom confortáveis e estilosos para sua organização ou evento."
+        },
+        "fullDescription": {
+            "en": "Stay warm in style with our custom hoodie designs:\n- Front and back design\n- Up to 4 colors\n- Multiple hoodie mockups\n- Print-ready files\n- 2 design concepts\n- Unlimited revisions",
+            "pt": "Fique aquecido com estilo com nossos designs de moletom personalizados:\n- Design frente e costas\n- Até 4 cores\n- Múltiplos mockups de moletom\n- Arquivos prontos para impressão\n- 2 conceitos de design\n- Revisões ilimitadas"
+        },
+        "price": 349,
+        "currency": "USD",
+        "categoryId": 1,
+        "categorySlug": "apparel",
+        "images": ["/images/shop/products/hoodie-1.jpg"],
+        "featured": false,
+        "inStock": true,
+        "tags": ["design", "apparel", "hoodie"]
+    },
+    {
+        "id": 8,
+        "slug": "newsletter-template-pack",
+        "name": {
+            "en": "Email Newsletter Templates",
+            "pt": "Templates de Newsletter por E-mail"
+        },
+        "description": {
+            "en": "Professional email newsletter templates to keep your community engaged.",
+            "pt": "Templates profissionais de newsletter por e-mail para manter sua comunidade engajada."
+        },
+        "fullDescription": {
+            "en": "Communicate effectively with beautiful newsletter templates:\n- 12 responsive email templates\n- Fully customizable\n- Compatible with major email platforms\n- Mobile-optimized\n- HTML and plain text versions\n- Step-by-step customization guide",
+            "pt": "Comunique-se efetivamente com templates bonitos de newsletter:\n- 12 templates de e-mail responsivos\n- Totalmente personalizáveis\n- Compatíveis com principais plataformas de e-mail\n- Otimizados para mobile\n- Versões HTML e texto simples\n- Guia passo a passo de personalização"
+        },
+        "price": 99,
+        "currency": "USD",
+        "categoryId": 3,
+        "categorySlug": "digital-templates",
+        "images": ["/images/shop/products/newsletter-1.jpg"],
+        "featured": false,
+        "inStock": true,
+        "tags": ["digital", "email", "templates"]
+    }
+]

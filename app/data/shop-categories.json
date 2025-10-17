@@ -1,0 +1,54 @@
+[
+    {
+        "id": 1,
+        "slug": "apparel",
+        "name": {
+            "en": "Apparel & Merchandise",
+            "pt": "Vestuário & Mercadorias"
+        },
+        "description": {
+            "en": "Custom branded apparel and merchandise for your organization",
+            "pt": "Vestuário e mercadorias personalizadas para sua organização"
+        },
+        "image": "/images/shop/categories/apparel.jpg"
+    },
+    {
+        "id": 2,
+        "slug": "print-materials",
+        "name": {
+            "en": "Print Materials",
+            "pt": "Materiais Impressos"
+        },
+        "description": {
+            "en": "Professional print materials including brochures, flyers, and posters",
+            "pt": "Materiais impressos profissionais incluindo folhetos, panfletos e pôsteres"
+        },
+        "image": "/images/shop/categories/print.jpg"
+    },
+    {
+        "id": 3,
+        "slug": "digital-templates",
+        "name": {
+            "en": "Digital Templates",
+            "pt": "Templates Digitais"
+        },
+        "description": {
+            "en": "Ready-to-use digital templates for social media and marketing",
+            "pt": "Templates digitais prontos para uso em redes sociais e marketing"
+        },
+        "image": "/images/shop/categories/digital.jpg"
+    },
+    {
+        "id": 4,
+        "slug": "event-materials",
+        "name": {
+            "en": "Event Materials",
+            "pt": "Materiais para Eventos"
+        },
+        "description": {
+            "en": "Everything you need for successful community events",
+            "pt": "Tudo que você precisa para eventos comunitários de sucesso"
+        },
+        "image": "/images/shop/categories/events.jpg"
+    }
+]

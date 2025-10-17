@@ -63,5 +63,33 @@
     "footer": {
         "newsletter": "Subscribe to our emails",
         "privacy": "Privacy Policy"
+    },
+    "shop": {
+        "title": "Shop",
+        "allProducts": "All Products",
+        "categories": "Categories",
+        "featured": "Featured Products",
+        "viewProduct": "View Product",
+        "addToCart": "Add to Cart",
+        "price": "Price",
+        "inStock": "In Stock",
+        "outOfStock": "Out of Stock",
+        "description": "Description",
+        "details": "Product Details",
+        "related": "Related Products",
+        "filterBy": "Filter by",
+        "sortBy": "Sort by",
+        "showing": "Showing {count} products",
+        "noProducts": "No products found",
+        "backToShop": "Back to Shop",
+        "viewCategory": "View Category",
+        "allCategories": "All Categories",
+        "sort": {
+            "featured": "Featured",
+            "priceLow": "Price: Low to High",
+            "priceHigh": "Price: High to Low",
+            "nameAZ": "Name: A-Z",
+            "nameZA": "Name: Z-A"
+        }
     }
 }

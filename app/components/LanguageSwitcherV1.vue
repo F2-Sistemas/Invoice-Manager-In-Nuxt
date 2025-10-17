@@ -17,21 +17,21 @@
 </template>
 
 <script setup lang="ts">
-const { locale, locales, setLocale } = useI18n()
+const { locale, locales, setLocale } = useI18n();
 
 const availableLocales = computed(() => {
     return (locales.value as any[]).map((l) => ({
         ...l,
         code: l.code,
         name: l.name,
-    }))
-})
+    }));
+});
 
 const currentLocaleName = computed(() => {
-    const current = availableLocales.value
+    const current = availableLocales.value;
     // .find((l) => l.code === locale.value);
-    return current?.name || 'English'
-})
+    return current?.name || 'English';
+});
 
 const items = computed(() => [
     availableLocales.value.map((loc) => ({
@@ -39,21 +39,21 @@ const items = computed(() => [
         code: loc.code,
         icon: locale.value === loc.code ? 'i-heroicons-check-circle' : undefined,
         click: async () => {
-            await setLocale(loc.code)
+            await setLocale(loc.code);
 
             if (import.meta.client) {
-                localStorage.setItem('preferred-locale', loc.code)
+                localStorage.setItem('preferred-locale', loc.code);
             }
         },
     })),
-])
+]);
 
 onMounted(() => {
     if (import.meta.client) {
-        const savedLocale = localStorage.getItem('preferred-locale')
+        const savedLocale = localStorage.getItem('preferred-locale');
         if (savedLocale && savedLocale !== locale.value) {
-            setLocale(savedLocale)
+            setLocale(savedLocale);
         }
     }
-})
+});
 </script>
