@@ -20,7 +20,7 @@
 
                 <UButton
                     icon="i-heroicons-bars-3"
-                    color="gray"
+                    color="neutral"
                     variant="ghost"
                     class="md:hidden"
                     @click="isMobileMenuOpen = !isMobileMenuOpen"

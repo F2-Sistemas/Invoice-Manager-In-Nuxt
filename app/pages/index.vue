@@ -13,7 +13,7 @@
                     <p class="text-lg mb-8 text-primary-100">
                         {{ $t('hero.description') }}
                     </p>
-                    <UButton to="/pages/contact" size="xl" color="white" variant="solid">
+                    <UButton to="/pages/contact" size="xl" color="info" variant="solid">
                         {{ $t('hero.cta') }}
                     </UButton>
                 </div>
@@ -134,7 +134,7 @@
                     <p class="text-xl mb-8">
                         {{ $t('cta.description') }}
                     </p>
-                    <UButton to="/pages/contact" size="xl" color="white" variant="solid">
+                    <UButton to="/pages/contact" size="xl" color="info" variant="solid">
                         {{ $t('hero.cta') }}
                     </UButton>
                 </div>
