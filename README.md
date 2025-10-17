@@ -1,5 +1,7 @@
 # Creative Kibbutz - Modern Website
 
+### [pt-br Readme](./README_pt-br.md)
+
 Modern website for Creative Kibbutz built with Nuxt 4 + NuxtUI.
 
 ## Features
