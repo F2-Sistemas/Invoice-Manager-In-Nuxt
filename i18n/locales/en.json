@@ -84,6 +84,8 @@
         "backToShop": "Back to Shop",
         "viewCategory": "View Category",
         "allCategories": "All Categories",
+        "clearFilters": "Clear filters",
+        "nothingFound": "Nothing found",
         "sort": {
             "featured": "Featured",
             "priceLow": "Price: Low to High",

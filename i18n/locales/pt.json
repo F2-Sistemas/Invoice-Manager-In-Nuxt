@@ -84,6 +84,8 @@
         "backToShop": "Voltar para Loja",
         "viewCategory": "Ver Categoria",
         "allCategories": "Todas as Categorias",
+        "clearFilters": "Limpar filtros",
+        "nothingFound": "Nada encontrado",
         "sort": {
             "featured": "Destaques",
             "priceLow": "Preço: Menor para Maior",

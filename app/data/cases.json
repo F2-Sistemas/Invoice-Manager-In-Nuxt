@@ -6,7 +6,10 @@
             "en": "L'Chaim Adult Day Centre Trifold Brochure",
             "pt": "Brochura Trifold L'Chaim Adult Day Centre"
         },
-        "category": "Print Design",
+        "category": {
+            "en": "Print Design",
+            "pt": "Print Design"
+        },
         "image": "/img/portfolio/lchaim_brochure.jpg",
         "description": {
             "en": "Professional trifold brochure design for L'Chaim Adult Day Centre showcasing their services and programs.",
@@ -41,7 +44,10 @@
             "en": "JCC of Greater Vancouver - Annual Campaign",
             "pt": "JCC de Greater Vancouver - Campanha Anual"
         },
-        "category": "Marketing & Branding",
+        "category": {
+            "en": "Marketing & Branding",
+            "pt": "Marketing & Branding"
+        },
         "image": "/img/portfolio/jcc_annual_campaign.jpg",
         "description": {
             "en": "Comprehensive annual campaign materials and marketing collateral for JCC of Greater Vancouver.",
@@ -76,7 +82,10 @@
             "en": "JCC of Greater Vancouver - Social Media Content",
             "pt": "JCC de Greater Vancouver - Conteúdo de Mídia Social"
         },
-        "category": "Digital & Social Media",
+        "category": {
+            "en": "Digital & Social Media",
+            "pt": "Digital & Social Media"
+        },
         "image": "/img/portfolio/jcc_social_media.jpg",
         "description": {
             "en": "Engaging social media content strategy and design for JCC's community engagement and program promotion.",
@@ -111,7 +120,10 @@
             "en": "Liessin High School - New Logo Design",
             "pt": "Liessin High School - Design do Novo Logo"
         },
-        "category": "Branding & Logo Design",
+        "category": {
+            "en": "Branding & Logo Design",
+            "pt": "Branding & Logo Design"
+        },
         "image": "/img/portfolio/liessin_logo.jpg",
         "description": {
             "en": "Modern logo redesign for Liessin High School reflecting their institutional values and contemporary identity.",
@@ -146,7 +158,10 @@
             "en": "JCC - Sports Dinner Event Social Media",
             "pt": "JCC - Mídia Social do Evento Sports Dinner"
         },
-        "category": "Event Marketing",
+        "category": {
+            "en": "Event Marketing",
+            "pt": "Event Marketing"
+        },
         "image": "/img/portfolio/jcc_sports_dinner.jpg",
         "description": {
             "en": "Social media graphics and promotional materials for JCC's sports dinner fundraising event.",
@@ -181,7 +196,10 @@
             "en": "Liessin High School - Advertisement and Brochure",
             "pt": "Liessin High School - Publicidade e Brochura"
         },
-        "category": "Print Design & Advertising",
+        "category": {
+            "en": "Print Design & Advertising",
+            "pt": "Print Design & Advertising"
+        },
         "image": "/img/portfolio/liessin_ad_brochure.jpg",
         "description": {
             "en": "Comprehensive advertising and brochure materials for Liessin High School's enrollment and brand promotion.",

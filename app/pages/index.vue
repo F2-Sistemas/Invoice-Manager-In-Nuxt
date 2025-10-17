@@ -93,7 +93,16 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                     <div v-for="caseItem in featuredCases" :key="caseItem.id" class="group cursor-pointer">
                         <UCard class="h-full transition-transform group-hover:scale-105">
-                            <div class="aspect-video bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
+                            <img
+                                v-if="caseItem?.image"
+                                :src="caseItem?.image"
+                                :alt="caseItem.title[locale]"
+                                class="rounded-xl max-w-5xl mx-auto w-10/12"
+                            />
+                            <div
+                                v-else
+                                class="aspect-video bg-gray-200 rounded-lg mb-4 flex items-center justify-center"
+                            >
                                 <UIcon name="i-heroicons-photo" class="w-16 h-16 text-gray-400" />
                             </div>
                             <UBadge color="primary" variant="soft" class="mb-2">
