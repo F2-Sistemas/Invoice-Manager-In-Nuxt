@@ -91,5 +91,35 @@
             "nameAZ": "Name: A-Z",
             "nameZA": "Name: Z-A"
         }
+    },
+    "blog": {
+        "title": "Blog",
+        "allPosts": "All Posts",
+        "categories": "Categories",
+        "tags": "Tags",
+        "featured": "Featured",
+        "latestPosts": "Latest Posts",
+        "readMore": "Read More",
+        "readingTime": "{time} min read",
+        "publishedOn": "Published on {date}",
+        "by": "by {author}",
+        "category": "Category",
+        "viewCategory": "View Category",
+        "allCategories": "All Categories",
+        "viewTag": "View Tag",
+        "allTags": "All Tags",
+        "filterBy": "Filter by",
+        "sortBy": "Sort by",
+        "showing": "Showing {count} posts",
+        "noPosts": "No posts found",
+        "backToBlog": "Back to Blog",
+        "relatedPosts": "Related Posts",
+        "sort": {
+            "featured": "Featured",
+            "newest": "Newest First",
+            "oldest": "Oldest First",
+            "titleAZ": "Title: A-Z",
+            "titleZA": "Title: Z-A"
+        }
     }
 }

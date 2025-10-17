@@ -1,0 +1,54 @@
+[
+    {
+        "id": 1,
+        "slug": "marketing",
+        "name": {
+            "en": "Marketing",
+            "pt": "Marketing"
+        },
+        "description": {
+            "en": "Marketing strategies and campaigns for community organizations",
+            "pt": "Estratégias e campanhas de marketing para organizações comunitárias"
+        },
+        "color": "primary"
+    },
+    {
+        "id": 2,
+        "slug": "design",
+        "name": {
+            "en": "Design",
+            "pt": "Design"
+        },
+        "description": {
+            "en": "Design tips and creative solutions",
+            "pt": "Dicas de design e soluções criativas"
+        },
+        "color": "purple"
+    },
+    {
+        "id": 3,
+        "slug": "technology",
+        "name": {
+            "en": "Technology",
+            "pt": "Tecnologia"
+        },
+        "description": {
+            "en": "Web development and technology insights",
+            "pt": "Desenvolvimento web e insights de tecnologia"
+        },
+        "color": "cyan"
+    },
+    {
+        "id": 4,
+        "slug": "community",
+        "name": {
+            "en": "Community",
+            "pt": "Comunidade"
+        },
+        "description": {
+            "en": "Stories and insights from our community",
+            "pt": "Histórias e insights de nossa comunidade"
+        },
+        "color": "rose"
+    }
+]

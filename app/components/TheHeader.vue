@@ -18,6 +18,13 @@
                     >
                         {{ $t('shop.title') }}
                     </NuxtLink>
+                    <NuxtLink
+                        v-if="blogEnabled"
+                        to="/blog"
+                        class="text-gray-700 hover:text-primary-600 transition-colors"
+                    >
+                        {{ $t('blog.title') }}
+                    </NuxtLink>
                     <NuxtLink to="/pages/contact" class="text-gray-700 hover:text-primary-600 transition-colors">
                         {{ $t('nav.contact') }}
                     </NuxtLink>
@@ -60,6 +67,14 @@
                         {{ $t('shop.title') }}
                     </NuxtLink>
                     <NuxtLink
+                        v-if="blogEnabled"
+                        to="/blog"
+                        class="text-gray-700 hover:text-primary-600 transition-colors"
+                        @click="isMobileMenuOpen = false"
+                    >
+                        {{ $t('blog.title') }}
+                    </NuxtLink>
+                    <NuxtLink
                         to="/pages/contact"
                         class="text-gray-700 hover:text-primary-600 transition-colors"
                         @click="isMobileMenuOpen = false"
@@ -77,4 +92,5 @@
 const isMobileMenuOpen = ref(false);
 const config = useRuntimeConfig();
 const shopEnabled = computed(() => config.public.shopEnabled);
+const blogEnabled = computed(() => config.public.blogEnabled);
 </script>

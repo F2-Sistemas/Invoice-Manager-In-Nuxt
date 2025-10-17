@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             shopEnabled: true, // Set to false to disable shop
+            blogEnabled: true, // Set to false to disable blog
         },
     },
 

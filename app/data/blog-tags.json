@@ -1,0 +1,10 @@
+[
+    { "id": 1, "slug": "tips", "name": { "en": "Tips", "pt": "Dicas" } },
+    { "id": 2, "slug": "tutorial", "name": { "en": "Tutorial", "pt": "Tutorial" } },
+    { "id": 3, "slug": "case-study", "name": { "en": "Case Study", "pt": "Estudo de Caso" } },
+    { "id": 4, "slug": "news", "name": { "en": "News", "pt": "Notícias" } },
+    { "id": 5, "slug": "inspiration", "name": { "en": "Inspiration", "pt": "Inspiração" } },
+    { "id": 6, "slug": "trends", "name": { "en": "Trends", "pt": "Tendências" } },
+    { "id": 7, "slug": "best-practices", "name": { "en": "Best Practices", "pt": "Melhores Práticas" } },
+    { "id": 8, "slug": "resources", "name": { "en": "Resources", "pt": "Recursos" } }
+]

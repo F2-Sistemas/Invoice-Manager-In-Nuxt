@@ -1,0 +1,146 @@
+[
+    {
+        "id": 1,
+        "slug": "effective-social-media-marketing",
+        "title": {
+            "en": "Effective Social Media Marketing for Community Organizations",
+            "pt": "Marketing de Redes Sociais Eficaz para Organizações Comunitárias"
+        },
+        "excerpt": {
+            "en": "Discover proven strategies to amplify your organization's voice on social media platforms.",
+            "pt": "Descubra estratégias comprovadas para amplificar a voz de sua organização nas redes sociais."
+        },
+        "content": {
+            "en": "Social media has become an essential tool for community organizations looking to connect with their audience. In this comprehensive guide, we'll explore proven strategies to help you maximize your social media presence and engagement.\n\n## Key Strategies\n\n1. **Know Your Audience** - Understand who you're trying to reach and tailor your content accordingly.\n2. **Consistent Posting** - Maintain a regular posting schedule to keep your audience engaged.\n3. **Engagement First** - Respond to comments and messages promptly to build community.\n4. **Visual Content** - Use high-quality images and videos to stand out in crowded feeds.",
+            "pt": "As redes sociais se tornaram uma ferramenta essencial para organizações comunitárias que buscam se conectar com seu público. Neste guia abrangente, exploraremos estratégias comprovadas para ajudá-lo a maximizar sua presença e engajamento nas redes sociais.\n\n## Estratégias-Chave\n\n1. **Conheça seu Público** - Entenda quem você está tentando alcançar e adapte seu conteúdo de acordo.\n2. **Postagem Consistente** - Mantenha um cronograma de postagem regular para manter seu público engajado.\n3. **Engajamento em Primeiro Lugar** - Responda a comentários e mensagens rapidamente para construir comunidade.\n4. **Conteúdo Visual** - Use imagens e vídeos de alta qualidade para se destacar em feeds lotados."
+        },
+        "author": "Creative Kibbutz Team",
+        "categoryId": 1,
+        "categorySlug": "marketing",
+        "tags": ["tips", "best-practices", "trends"],
+        "featured": true,
+        "publishedAt": "2025-10-15",
+        "readingTime": 8,
+        "image": "/images/blog/social-media.jpg"
+    },
+    {
+        "id": 2,
+        "slug": "design-principles-for-nonprofits",
+        "title": {
+            "en": "Design Principles for Nonprofit Branding",
+            "pt": "Princípios de Design para Marca de ONGs"
+        },
+        "excerpt": {
+            "en": "Learn how to create a cohesive and memorable brand identity that resonates with your community.",
+            "pt": "Aprenda como criar uma identidade de marca coesa e memorável que ressoe com sua comunidade."
+        },
+        "content": {
+            "en": "Strong branding is crucial for nonprofit organizations to establish trust and recognition within their communities. This guide covers the fundamental design principles that will help you create a compelling brand identity.\n\n## Core Design Principles\n\n1. **Consistency** - Maintain consistent visual elements across all materials.\n2. **Clarity** - Ensure your messaging is clear and easy to understand.\n3. **Authenticity** - Represent your organization's true values and mission.",
+            "pt": "Marca forte é crucial para organizações sem fins lucrativos estabelecerem confiança e reconhecimento em suas comunidades. Este guia cobre os princípios fundamentais de design que ajudarão você a criar uma identidade de marca convincente.\n\n## Princípios de Design Essenciais\n\n1. **Consistência** - Mantenha elementos visuais consistentes em todos os materiais.\n2. **Clareza** - Garanta que suas mensagens sejam claras e fáceis de entender.\n3. **Autenticidade** - Represente verdadeiramente os valores e missão de sua organização."
+        },
+        "author": "Sarah Design",
+        "categoryId": 2,
+        "categorySlug": "design",
+        "tags": ["tips", "inspiration", "best-practices"],
+        "featured": true,
+        "publishedAt": "2025-10-12",
+        "readingTime": 6,
+        "image": "/images/blog/design-principles.jpg"
+    },
+    {
+        "id": 3,
+        "slug": "building-responsive-websites",
+        "title": {
+            "en": "Building Responsive Websites with Modern Technology",
+            "pt": "Construindo Websites Responsivos com Tecnologia Moderna"
+        },
+        "excerpt": {
+            "en": "A comprehensive tutorial on creating websites that work perfectly on all devices.",
+            "pt": "Um tutorial abrangente sobre como criar websites que funcionam perfeitamente em todos os dispositivos."
+        },
+        "content": {
+            "en": "In today's mobile-first world, having a responsive website is essential. This tutorial walks you through the process of building a website that adapts seamlessly to different screen sizes.\n\n## Responsive Design Basics\n\n1. **Mobile-First Approach** - Start with mobile design and scale up.\n2. **Flexible Grids** - Use CSS Grid and Flexbox for layout.\n3. **Media Queries** - Adjust styles for different screen sizes.",
+            "pt": "No mundo atual focado em mobile, ter um website responsivo é essencial. Este tutorial o guia através do processo de construir um website que se adapta perfeitamente a diferentes tamanhos de tela.\n\n## Noções Básicas de Design Responsivo\n\n1. **Abordagem Mobile-First** - Comece com design mobile e dimensione para cima.\n2. **Grades Flexíveis** - Use CSS Grid e Flexbox para layout.\n3. **Media Queries** - Ajuste estilos para diferentes tamanhos de tela."
+        },
+        "author": "Tech Team",
+        "categoryId": 3,
+        "categorySlug": "technology",
+        "tags": ["tutorial", "resources", "best-practices"],
+        "featured": false,
+        "publishedAt": "2025-10-10",
+        "readingTime": 12,
+        "image": "/images/blog/responsive-design.jpg"
+    },
+    {
+        "id": 4,
+        "slug": "community-spotlight-jcc-vancouver",
+        "title": {
+            "en": "Community Spotlight: JCC of Greater Vancouver",
+            "pt": "Destaque da Comunidade: JCC de Greater Vancouver"
+        },
+        "excerpt": {
+            "en": "Learn how JCC Vancouver successfully transformed their digital presence with Creative Kibbutz.",
+            "pt": "Saiba como JCC Vancouver transformou com sucesso sua presença digital com Creative Kibbutz."
+        },
+        "content": {
+            "en": "The Jewish Community Centre of Greater Vancouver is a vibrant hub of community activity. In this case study, we explore how they partnered with Creative Kibbutz to revamp their digital presence.\n\n## The Challenge\n\nJCC faced challenges in reaching their diverse audience across multiple platforms. Their existing digital infrastructure was outdated and didn't reflect the vibrancy of their programs.\n\n## The Solution\n\nWe developed a comprehensive digital strategy that included a modern website, unified social media presence, and targeted email campaigns.",
+            "pt": "O Centro Comunitário Judaico de Greater Vancouver é um hub vibrante de atividades comunitárias. Neste estudo de caso, exploramos como eles se associaram ao Creative Kibbutz para revitalizar sua presença digital.\n\n## O Desafio\n\nO JCC enfrentava desafios em alcançar seu público diverso em múltiplas plataformas. Sua infraestrutura digital existente estava desatualizada e não refletia a vibração de seus programas.\n\n## A Solução\n\nDesenvolvemos uma estratégia digital abrangente que incluía um website moderno, presença unificada nas redes sociais e campanhas de email direcionadas."
+        },
+        "author": "Creative Kibbutz",
+        "categoryId": 4,
+        "categorySlug": "community",
+        "tags": ["case-study", "news", "inspiration"],
+        "featured": true,
+        "publishedAt": "2025-10-08",
+        "readingTime": 10,
+        "image": "/images/blog/jcc-spotlight.jpg"
+    },
+    {
+        "id": 5,
+        "slug": "digital-marketing-trends-2025",
+        "title": {
+            "en": "Digital Marketing Trends to Watch in 2025",
+            "pt": "Tendências de Marketing Digital para Acompanhar em 2025"
+        },
+        "excerpt": {
+            "en": "Stay ahead of the curve with our guide to emerging digital marketing trends.",
+            "pt": "Fique à frente com nosso guia sobre tendências emergentes de marketing digital."
+        },
+        "content": {
+            "en": "As we move further into 2025, several key trends are shaping the digital marketing landscape. Here are the trends that will define the year:\n\n## Key Trends\n\n1. **AI-Powered Personalization** - Expect more personalized content delivery.\n2. **Video-First Content** - Short-form video continues to dominate.\n3. **Community Building** - Direct relationships with audiences become more important.\n4. **Data Privacy** - Transparency in data handling is crucial.",
+            "pt": "Conforme avançamos em 2025, várias tendências principais estão moldando o cenário de marketing digital. Aqui estão as tendências que definirão o ano:\n\n## Tendências-Chave\n\n1. **Personalização Impulsionada por IA** - Espere entrega de conteúdo mais personalizada.\n2. **Conteúdo em Primeiro Lugar no Vídeo** - Vídeos em formato curto continuam a dominar.\n3. **Construção de Comunidade** - Relacionamentos diretos com o público se tornam mais importantes.\n4. **Privacidade de Dados** - Transparência na manipulação de dados é crucial."
+        },
+        "author": "Marketing Insights Team",
+        "categoryId": 1,
+        "categorySlug": "marketing",
+        "tags": ["trends", "news", "resources"],
+        "featured": false,
+        "publishedAt": "2025-10-05",
+        "readingTime": 7,
+        "image": "/images/blog/trends.jpg"
+    },
+    {
+        "id": 6,
+        "slug": "creative-branding-strategies",
+        "title": {
+            "en": "Creative Branding Strategies That Stand Out",
+            "pt": "Estratégias de Marca Criativas que Se Destacam"
+        },
+        "excerpt": {
+            "en": "Explore unique branding approaches that help your organization stand out in a crowded marketplace.",
+            "pt": "Explore abordagens de marca exclusivas que ajudam sua organização a se destacar em um mercado abarrotado."
+        },
+        "content": {
+            "en": "In a competitive landscape, creativity is your greatest asset. This article explores branding strategies that have proven effective for community organizations.\n\n## Creative Approaches\n\n1. **Storytelling** - Share your organization's journey and impact stories.\n2. **Visual Innovation** - Develop unique visual identities.\n3. **Community Engagement** - Involve your community in your branding process.",
+            "pt": "Em um cenário competitivo, a criatividade é seu maior ativo. Este artigo explora estratégias de marca que se provaram eficazes para organizações comunitárias.\n\n## Abordagens Criativas\n\n1. **Narrativa** - Compartilhe a jornada de sua organização e histórias de impacto.\n2. **Inovação Visual** - Desenvolva identidades visuais exclusivas.\n3. **Engajamento Comunitário** - Envolva sua comunidade no processo de marca."
+        },
+        "author": "Brand Strategy Team",
+        "categoryId": 2,
+        "categorySlug": "design",
+        "tags": ["inspiration", "best-practices", "tips"],
+        "featured": false,
+        "publishedAt": "2025-10-01",
+        "readingTime": 8,
+        "image": "/images/blog/branding-strategies.jpg"
+    }
+]
