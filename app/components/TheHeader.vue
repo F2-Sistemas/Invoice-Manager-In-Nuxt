@@ -15,8 +15,10 @@
                         {{ $t('nav.contact') }}
                     </NuxtLink>
 
-                    <LanguageSwitcher />
                 </nav>
+                <div class="">
+                    <LanguageSwitcher />
+                </div>
 
                 <UButton
                     icon="i-heroicons-bars-3"
@@ -50,7 +52,8 @@
                     >
                         {{ $t('nav.contact') }}
                     </NuxtLink>
-                    <LanguageSwitcher />
+                    <!-- <LanguageSwitcher /> -->
+                    <LanguageSwitcherV1 />
                 </nav>
             </div>
         </UContainer>

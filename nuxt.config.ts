@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     ],
 
     i18n: {
+        // vueI18n: './nuxt-i18n.js',
         locales: [
             {
                 code: 'en',
@@ -30,6 +31,7 @@ export default defineNuxtConfig({
         langDir: 'locales',
         defaultLocale: 'en',
         strategy: 'no_prefix',
+        skipSettingLocaleOnNavigate: true,
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: 'i18n_redirected',

@@ -4,7 +4,7 @@
         <section class="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-16">
             <UContainer>
                 <div class="max-w-4xl mx-auto">
-                    <UBadge color="white" variant="soft" size="lg" class="mb-4">
+                    <UBadge color="neutral" variant="soft" size="lg" class="mb-4">
                         {{ caseData.category[locale] }}
                     </UBadge>
                     <h1 class="text-5xl font-bold mb-6">
@@ -101,57 +101,154 @@
         </section>
 
         <!-- Schedule Contact Form -->
-        <section class="py-16 bg-gray-50">
+        <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
             <UContainer>
-                <div class="max-w-4xl mx-auto">
-                    <div class="text-center mb-8">
+                <div class="max-w-5xl mx-auto">
+                    <div class="text-center mb-12">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
+                            <UIcon name="i-heroicons-calendar-days" class="w-8 h-8 text-primary-600" />
+                        </div>
                         <h2 class="text-4xl font-bold mb-4">
                             {{ $t('case.scheduleContact.title') }}
                         </h2>
-                        <p class="text-lg text-gray-600">
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                             {{ $t('case.scheduleContact.description') }}
                         </p>
                     </div>
 
-                    <UCard>
-                        <form @submit.prevent="submitSchedule" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <UFormGroup :label="$t('contact.form.name')" required>
-                                    <UInput v-model="scheduleForm.name" type="text" size="lg" required />
-                                </UFormGroup>
+                    <UCard class="shadow-xl">
+                        <UForm :state="scheduleForm" :schema="formSchema" @submit="submitSchedule">
+                            <div class="space-y-6">
+                                <!-- Personal Information -->
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                                        <UIcon name="i-heroicons-user-circle" class="text-primary-600" />
+                                        Personal Information
+                                    </h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <UFormGroup :label="$t('contact.form.name')" name="name" required>
+                                            <UInput
+                                                v-model="scheduleForm.name"
+                                                icon="i-heroicons-user"
+                                                size="lg"
+                                                placeholder="John Doe"
+                                            />
+                                        </UFormGroup>
 
-                                <UFormGroup :label="$t('contact.form.email')" required>
-                                    <UInput v-model="scheduleForm.email" type="email" size="lg" required />
-                                </UFormGroup>
+                                        <UFormGroup :label="$t('contact.form.email')" name="email" required>
+                                            <UInput
+                                                v-model="scheduleForm.email"
+                                                type="email"
+                                                icon="i-heroicons-envelope"
+                                                size="lg"
+                                                placeholder="john@example.com"
+                                            />
+                                        </UFormGroup>
 
-                                <UFormGroup :label="$t('contact.form.phone')">
-                                    <UInput v-model="scheduleForm.phone" type="tel" size="lg" />
-                                </UFormGroup>
+                                        <UFormGroup :label="$t('contact.form.phone')" name="phone">
+                                            <UInput
+                                                v-model="scheduleForm.phone"
+                                                type="tel"
+                                                icon="i-heroicons-phone"
+                                                size="lg"
+                                                placeholder="+1 (555) 123-4567"
+                                            />
+                                        </UFormGroup>
 
-                                <UFormGroup :label="$t('case.scheduleContact.service')" required>
-                                    <UInput v-model="scheduleForm.service" type="text" size="lg" required />
-                                </UFormGroup>
+                                        <UFormGroup :label="$t('case.scheduleContact.service')" name="service" required>
+                                            <USelectMenu
+                                                v-model="scheduleForm.service"
+                                                :options="serviceOptions"
+                                                size="lg"
+                                                placeholder="Select a service"
+                                            >
+                                                <template #leading>
+                                                    <UIcon name="i-heroicons-briefcase" />
+                                                </template>
+                                            </USelectMenu>
+                                        </UFormGroup>
+                                    </div>
+                                </div>
 
-                                <UFormGroup :label="$t('case.scheduleContact.date')">
-                                    <UInput v-model="scheduleForm.preferredDate" type="date" size="lg" />
-                                </UFormGroup>
+                                <!-- Schedule Preferences -->
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                                        <UIcon name="i-heroicons-clock" class="text-primary-600" />
+                                        Schedule Preferences
+                                    </h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <UFormGroup :label="$t('case.scheduleContact.date')" name="preferredDate">
+                                            <UInput
+                                                v-model="scheduleForm.preferredDate"
+                                                type="date"
+                                                icon="i-heroicons-calendar"
+                                                size="lg"
+                                                :min="minDate"
+                                            />
+                                        </UFormGroup>
 
-                                <UFormGroup :label="$t('case.scheduleContact.time')">
-                                    <UInput v-model="scheduleForm.preferredTime" type="time" size="lg" />
-                                </UFormGroup>
+                                        <UFormGroup :label="$t('case.scheduleContact.time')" name="preferredTime">
+                                            <USelectMenu
+                                                v-model="scheduleForm.preferredTime"
+                                                :options="timeSlots"
+                                                size="lg"
+                                                placeholder="Select a time"
+                                            >
+                                                <template #leading>
+                                                    <UIcon name="i-heroicons-clock" />
+                                                </template>
+                                            </USelectMenu>
+                                        </UFormGroup>
+                                    </div>
+                                </div>
+
+                                <!-- Additional Information -->
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                                        <UIcon name="i-heroicons-chat-bubble-left-right" class="text-primary-600" />
+                                        Additional Information
+                                    </h3>
+                                    <UFormGroup :label="$t('contact.form.message')" name="message">
+                                        <UTextarea
+                                            v-model="scheduleForm.message"
+                                            :rows="5"
+                                            size="lg"
+                                            placeholder="Tell us more about your project..."
+                                        />
+                                    </UFormGroup>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="flex items-center justify-center pt-4">
+                                    <UButton
+                                        type="submit"
+                                        size="xl"
+                                        :loading="isSubmitting"
+                                        icon="i-heroicons-paper-airplane"
+                                        class="px-12"
+                                    >
+                                        {{ $t('case.scheduleContact.submit') }}
+                                    </UButton>
+                                </div>
                             </div>
-
-                            <UFormGroup :label="$t('contact.form.message')">
-                                <UTextarea v-model="scheduleForm.message" rows="4" size="lg" />
-                            </UFormGroup>
-
-                            <div class="text-center">
-                                <UButton type="submit" size="lg" :loading="isSubmitting">
-                                    {{ $t('case.scheduleContact.submit') }}
-                                </UButton>
-                            </div>
-                        </form>
+                        </UForm>
                     </UCard>
+
+                    <!-- Trust Indicators -->
+                    <div class="mt-8 flex items-center justify-center gap-8 text-sm text-gray-500">
+                        <div class="flex items-center gap-2">
+                            <UIcon name="i-heroicons-shield-check" class="text-green-600" />
+                            <span>Secure & Private</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <UIcon name="i-heroicons-clock" class="text-blue-600" />
+                            <span>24h Response Time</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <UIcon name="i-heroicons-check-badge" class="text-purple-600" />
+                            <span>No Commitment Required</span>
+                        </div>
+                    </div>
                 </div>
             </UContainer>
         </section>
@@ -180,16 +277,29 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute();
-const { locale } = useI18n();
-const { t } = useI18n();
-const toast = useToast();
+import { z } from 'zod'
 
-const casesData = await import('~/data/cases.json').then((m) => m.default);
+const route = useRoute()
+const { locale } = useI18n()
+const { t } = useI18n()
+const toast = useToast()
+
+const casesData = await import('~/data/cases.json').then((m) => m.default)
 
 const caseData = computed(() => {
-    return casesData.find((c) => c.slug === route.params.slug);
-});
+    return casesData.find((c) => c.slug === route.params.slug)
+})
+
+// Form Schema with Zod validation
+const formSchema = z.object({
+    name: z.string().min(2, 'Name must be at least 2 characters'),
+    email: z.string().email('Invalid email address'),
+    phone: z.string().optional(),
+    service: z.string().min(1, 'Please select a service'),
+    preferredDate: z.string().optional(),
+    preferredTime: z.string().optional(),
+    message: z.string().optional(),
+})
 
 const scheduleForm = ref({
     name: '',
@@ -199,22 +309,59 @@ const scheduleForm = ref({
     preferredDate: '',
     preferredTime: '',
     message: '',
-});
+})
 
-const isSubmitting = ref(false);
+const isSubmitting = ref(false)
 
-const submitSchedule = async () => {
-    isSubmitting.value = true;
+// Service options
+const serviceOptions = [
+    'Branding & Logo Design',
+    'Marketing Campaign',
+    'Social Media Management',
+    'Print Design',
+    'Event Marketing',
+    'Apparel Design',
+    'Web Design',
+    'Video Production',
+    'Consultation',
+    'Other',
+]
+
+// Time slots
+const timeSlots = [
+    '09:00 AM',
+    '10:00 AM',
+    '11:00 AM',
+    '12:00 PM',
+    '01:00 PM',
+    '02:00 PM',
+    '03:00 PM',
+    '04:00 PM',
+    '05:00 PM',
+]
+
+// Min date (today)
+const minDate = computed(() => {
+    const today = new Date()
+    return today.toISOString().split('T')[0]
+})
+
+const submitSchedule = async (event: any) => {
+    isSubmitting.value = true
 
     try {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        // Simulate API call
+        await new Promise((resolve) => setTimeout(resolve, 1500))
 
         toast.add({
-            title: 'Success!',
-            description: 'Your contact request has been received. We will get back to you soon.',
-            color: 'green',
-        });
+            title: t('case.scheduleContact.submit') + ' ✓',
+            description: 'Your contact request has been received. We will get back to you within 24 hours.',
+            color: 'success',
+            icon: 'i-heroicons-check-circle',
+            timeout: 5000,
+        })
 
+        // Reset form
         scheduleForm.value = {
             name: '',
             email: '',
@@ -223,20 +370,21 @@ const submitSchedule = async () => {
             preferredDate: '',
             preferredTime: '',
             message: '',
-        };
+        }
     } catch (error) {
         toast.add({
             title: 'Error',
-            description: 'Something went wrong. Please try again.',
-            color: 'red',
-        });
+            description: 'Something went wrong. Please try again or contact us directly.',
+            color: 'error',
+            icon: 'i-heroicons-exclamation-circle',
+        })
     } finally {
-        isSubmitting.value = false;
+        isSubmitting.value = false
     }
-};
+}
 
 useHead({
     title: caseData.value ? `${caseData.value.title[locale.value]} - Creative Kibbutz` : 'Case Not Found',
     meta: [{ name: 'description', content: caseData.value?.description[locale.value] || '' }],
-});
+})
 </script>

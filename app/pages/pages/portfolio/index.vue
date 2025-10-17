@@ -20,11 +20,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div v-for="caseItem in allCases" :key="caseItem.id" class="group cursor-pointer">
                         <UCard class="h-full transition-transform group-hover:scale-105">
-                            <div
-                                class="aspect-video bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden"
+                            <NuxtLink
+                                :to="`/pages/portfolio/case/${caseItem.slug}`"
                             >
-                                <UIcon name="i-heroicons-photo" class="w-16 h-16 text-gray-400" />
-                            </div>
+                                <div
+                                    class="aspect-video bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden"
+                                >
+                                    <UIcon name="i-heroicons-photo" class="w-16 h-16 text-gray-400" />
+                                </div>
+                            </NuxtLink>
                             <UBadge color="primary" variant="soft" class="mb-3">
                                 {{ caseItem.category[locale] }}
                             </UBadge>

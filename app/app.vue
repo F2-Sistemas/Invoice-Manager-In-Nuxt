@@ -1,7 +1,13 @@
 <template>
     <div>
         <NuxtLayout>
-            <NuxtPage />
+            <NuxtPage
+                :transition="{
+                    name: 'my',
+                    mode: 'out-in',
+                    onBeforeEnter,
+                }"
+            />
         </NuxtLayout>
     </div>
 </template>
@@ -14,4 +20,21 @@ useHead({
         lang: 'en',
     },
 });
+
+const { finalizePendingLocaleChange } = useI18n();
+
+const onBeforeEnter = async () => {
+    await finalizePendingLocaleChange();
+};
 </script>
+
+<style>
+.my-enter-active,
+.my-leave-active {
+    transition: opacity 0.3s;
+}
+.my-enter,
+.my-leave-active {
+    opacity: 0;
+}
+</style>

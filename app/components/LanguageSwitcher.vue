@@ -1,44 +1,31 @@
-<template>
-    <USelectMenu
-        v-model="selectedLocale"
-        :options="availableLocales"
-        option-attribute="name"
-        value-attribute="code"
-        @update:model-value="changeLocale"
-    >
-        <template #leading>
-            <UIcon name="i-heroicons-language" />
-        </template>
-    </USelectMenu>
-</template>
-
 <script setup lang="ts">
-const { locale, locales, setLocale } = useI18n();
+const { locale, locales } = useI18n();
+const switchLocalePath = useSwitchLocalePath();
 
-const availableLocales = computed(() =>
-    (locales.value as any[]).map((l) => ({
-        code: l.code,
-        name: l.name,
-    }))
+const availableLocales = computed(() => {
+    return locales.value.map((i) => ({
+        ...i,
+        // label: i.name,
+        label: i.code,
+        value: i.code,
+        isCurrent: i.code === locale.value,
+    }));
+    // .filter((i) => i.code !== locale.value)
+});
+
+const value = ref(
+    locale.value || {
+        code: 'en',
+        name: 'English',
+        language: '',
+    }
 );
 
-const selectedLocale = ref(locale.value);
-
-const changeLocale = async (newLocale: string) => {
-    await setLocale(newLocale);
-
-    if (import.meta.client) {
-        localStorage.setItem('preferred-locale', newLocale);
-    }
+const changed = (ev: any) => {
+    switchLocalePath(value.value?.code || 'en')
 };
-
-onMounted(() => {
-    if (import.meta.client) {
-        const savedLocale = localStorage.getItem('preferred-locale');
-        if (savedLocale && savedLocale !== locale.value) {
-            setLocale(savedLocale);
-            selectedLocale.value = savedLocale;
-        }
-    }
-});
 </script>
+
+<template>
+    <USelectMenu v-model="value" :items="availableLocales" @change="changed" />
+</template>
