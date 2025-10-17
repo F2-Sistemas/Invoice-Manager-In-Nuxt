@@ -33,8 +33,10 @@
             </div>
 
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <div class="mb-4">
+                <div class="mb-4 flex items-center justify-center gap-4">
                     <LanguageSwitcher />
+                    <div class="h-6 w-px bg-gray-700" />
+                    <UColorModeSelect color="gray" variant="ghost" />
                 </div>
                 <p>&copy; {{ new Date().getFullYear() }} Creative Kibbutz. All rights reserved.</p>
                 <NuxtLink to="/privacy" class="hover:text-white transition-colors mt-2 inline-block">
