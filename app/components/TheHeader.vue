@@ -2,7 +2,9 @@
     <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
         <UContainer>
             <div class="flex items-center justify-between h-16">
-                <NuxtLink to="/" class="text-2xl font-bold text-primary-600">Creative Kibbutz</NuxtLink>
+                <NuxtLink to="/" class="flex items-center">
+                    <img src="@/assets/img/logo.png" alt="Creative Kibbutz" class="h-12 w-auto" />
+                </NuxtLink>
 
                 <nav class="hidden md:flex items-center gap-8">
                     <NuxtLink to="/" class="text-gray-700 hover:text-primary-600 transition-colors">
