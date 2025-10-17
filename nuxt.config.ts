@@ -1,3 +1,5 @@
+import twDefaultTheme from 'tailwindcss/defaultTheme';
+
 import nuxtUiVite from '@nuxt/ui/vite';
 import tailwindcss from '@tailwindcss/vite';
 
@@ -73,7 +75,7 @@ export default defineNuxtConfig({
             },
 
             fontFamily: {
-                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter var', ...twDefaultTheme.fontFamily.sans],
             },
         },
     },

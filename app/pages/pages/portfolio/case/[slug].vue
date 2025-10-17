@@ -31,7 +31,14 @@
             </section>
 
             <UContainer>
+                <img
+                    v-if="caseData?.image"
+                    :src="caseData?.image"
+                    :alt="caseData.title[locale]"
+                    class="rounded-xl max-w-5xl mx-auto w-10/12"
+                />
                 <div
+                    v-else
                     class="aspect-video bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden max-w-5xl mx-auto"
                 >
                     <UIcon name="i-heroicons-photo" class="w-24 h-24 text-gray-400" />
