@@ -34,8 +34,7 @@ export default defineNuxtConfig({
                 file: 'pt.json',
             },
         ],
-        // langDir: 'locales',
-        langDir: 'i18n/locales',
+        langDir: 'locales', // inside /i18n directory
         defaultLocale: 'en',
         strategy: 'no_prefix',
         detectBrowserLanguage: {
