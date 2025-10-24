@@ -36,6 +36,7 @@ components.d.ts
 *NO*COMMIT*
 *.bkp.*
 *.bkp
+*.zip
 *.log
 *.out
 _ide_helper*
