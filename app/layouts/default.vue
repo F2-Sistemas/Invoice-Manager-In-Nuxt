@@ -46,7 +46,7 @@ const links = [
                         </nav>
                     </div>
 
-                    <UDropdown
+                    <DropdownMenu
                         :items="[
                             [
                                 {
@@ -70,7 +70,7 @@ const links = [
                         >
                             {{ user?.username }}
                         </UButton>
-                    </UDropdown>
+                    </DropdownMenu>
                 </div>
             </div>
         </header>

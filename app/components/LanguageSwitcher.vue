@@ -1,5 +1,5 @@
 <template>
-    <UDropdownMenu
+    <DropdownMenu
         :ui="{
             content: 'w-48',
         }"
@@ -20,7 +20,7 @@
                 class="flex-shrink-0 h-5 w-5 text-primary-500"
             />
         </template>
-    </UDropdownMenu>
+    </DropdownMenu>
 </template>
 
 <script setup lang="ts">

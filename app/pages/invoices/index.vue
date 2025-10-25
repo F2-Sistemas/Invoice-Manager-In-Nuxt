@@ -100,13 +100,13 @@ const deleteInvoice = async (id: number) => {
             <UTable
                 :rows="invoices || []"
                 :columns="[
-                    { key: 'id', label: 'Invoice #' },
-                    { key: 'client.name', label: 'Client' },
-                    { key: 'total', label: 'Amount' },
-                    { key: 'status', label: 'Status' },
-                    { key: 'issueDate', label: 'Issue Date' },
-                    { key: 'dueDate', label: 'Due Date' },
-                    { key: 'actions', label: 'Actions', class: 'text-right' },
+                    { key: 'id', label: 'Invoice #', id: 'id' },
+                    { key: 'client.name', label: 'Client', id: 'clientName' },
+                    { key: 'total', label: 'Amount', id: 'total' },
+                    { key: 'status', label: 'Status', id: 'status' },
+                    { key: 'issueDate', label: 'Issue Date', id: 'issueDate' },
+                    { key: 'dueDate', label: 'Due Date', id: 'dueDate' },
+                    { key: 'actions', label: 'Actions', id: 'actions', class: 'text-right' },
                 ]"
             >
                 <template #id-data="{ row }">

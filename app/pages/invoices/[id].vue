@@ -128,12 +128,12 @@ Brazil
                     <UTable
                         :rows="invoice.items"
                         :columns="[
-                            { key: 'order', label: 'Item' },
-                            { key: 'description', label: 'Description' },
-                            { key: 'unity', label: 'Unity' },
-                            { key: 'quantity', label: 'Quantity' },
-                            { key: 'unitPrice', label: `Unit Price (${invoice.currency})` },
-                            { key: 'amount', label: `Amount (${invoice.currency})` },
+                            { key: 'order', label: 'Item', id: 'order' },
+                            { key: 'description', label: 'Description', id: 'description' },
+                            { key: 'unity', label: 'Unity', id: 'unity' },
+                            { key: 'quantity', label: 'Quantity', id: 'quantity' },
+                            { key: 'unitPrice', label: `Unit Price (${invoice.currency})`, id: 'unitPrice' },
+                            { key: 'amount', label: `Amount (${invoice.currency})`, id: 'amount' },
                         ]"
                     >
                         <template #quantity-data="{ row }">

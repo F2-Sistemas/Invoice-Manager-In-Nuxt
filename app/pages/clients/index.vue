@@ -69,11 +69,11 @@ const onSaved = () => {
             <UTable
                 :rows="filteredClients"
                 :columns="[
-                    { key: 'name', label: 'Name' },
-                    { key: 'email', label: 'Email' },
-                    { key: 'country', label: 'Country' },
-                    { key: '_count.invoices', label: 'Invoices' },
-                    { key: 'actions', label: 'Actions', class: 'text-right' },
+                    { key: 'name', label: 'Name', id: 'name' },
+                    { key: 'email', label: 'Email', id: 'email' },
+                    { key: 'country', label: 'Country', id: 'country' },
+                    { key: '_count.invoices', label: 'Invoices', id: 'invoicesCount' },
+                    { key: 'actions', label: 'Actions', id: 'actions', class: 'text-right' },
                 ]"
             >
                 <template #_count.invoices-data="{ row }">
