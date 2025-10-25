@@ -1,0 +1,13 @@
+# Prisma Generated Client
+# The .prisma folder is automatically generated when running Prisma commands
+# It contains compiled type definitions and should not be versioned
+.prisma/
+
+# Migration Lock File
+# This file is auto-generated and environment-specific
+# It's already ignored in the root .gitignore
+migration_lock.toml
+
+# Environment-specific files (if any local .env files are placed here)
+.env.local
+.env.*.local
