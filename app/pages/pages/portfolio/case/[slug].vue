@@ -144,7 +144,7 @@
                                         Personal Information
                                     </h3>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <UFormGroup :label="$t('contact.form.name')" name="name" required>
+                                        <UFormField :label="$t('contact.form.name')" name="name" required>
                                             <UInput
                                                 v-model="scheduleForm.name"
                                                 icon="i-heroicons-user"
@@ -152,9 +152,9 @@
                                                 :class="['w-full']"
                                                 placeholder="John Doe"
                                             />
-                                        </UFormGroup>
+                                        </UFormField>
 
-                                        <UFormGroup :label="$t('contact.form.email')" name="email" required>
+                                        <UFormField :label="$t('contact.form.email')" name="email" required>
                                             <UInput
                                                 v-model="scheduleForm.email"
                                                 type="email"
@@ -163,9 +163,9 @@
                                                 :class="['w-full']"
                                                 placeholder="john@example.com"
                                             />
-                                        </UFormGroup>
+                                        </UFormField>
 
-                                        <UFormGroup :label="$t('contact.form.phone')" name="phone">
+                                        <UFormField :label="$t('contact.form.phone')" name="phone">
                                             <UInput
                                                 v-model="scheduleForm.phone"
                                                 type="tel"
@@ -174,9 +174,9 @@
                                                 :class="['w-full']"
                                                 placeholder="+1 (555) 123-4567"
                                             />
-                                        </UFormGroup>
+                                        </UFormField>
 
-                                        <UFormGroup :label="$t('case.scheduleContact.service')" name="service" required>
+                                        <UFormField :label="$t('case.scheduleContact.service')" name="service" required>
                                             <USelectMenu
                                                 v-model="scheduleForm.service"
                                                 :options="serviceOptions"
@@ -188,7 +188,7 @@
                                                     <UIcon name="i-heroicons-briefcase" />
                                                 </template>
                                             </USelectMenu>
-                                        </UFormGroup>
+                                        </UFormField>
                                     </div>
                                 </div>
 
@@ -199,7 +199,7 @@
                                         Schedule Preferences
                                     </h3>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <UFormGroup :label="$t('case.scheduleContact.date')" name="preferredDate">
+                                        <UFormField :label="$t('case.scheduleContact.date')" name="preferredDate">
                                             <UInput
                                                 v-model="scheduleForm.preferredDate"
                                                 type="date"
@@ -208,9 +208,9 @@
                                                 :class="['w-full']"
                                                 :min="minDate"
                                             />
-                                        </UFormGroup>
+                                        </UFormField>
 
-                                        <UFormGroup :label="$t('case.scheduleContact.time')" name="preferredTime">
+                                        <UFormField :label="$t('case.scheduleContact.time')" name="preferredTime">
                                             <USelectMenu
                                                 v-model="scheduleForm.preferredTime"
                                                 :options="timeSlots"
@@ -222,7 +222,7 @@
                                                     <UIcon name="i-heroicons-clock" />
                                                 </template>
                                             </USelectMenu>
-                                        </UFormGroup>
+                                        </UFormField>
                                     </div>
                                 </div>
 
@@ -232,7 +232,7 @@
                                         <UIcon name="i-heroicons-chat-bubble-left-right" class="text-primary-600" />
                                         Additional Information
                                     </h3>
-                                    <UFormGroup :label="$t('contact.form.message')" name="message">
+                                    <UFormField :label="$t('contact.form.message')" name="message">
                                         <UTextarea
                                             v-model="scheduleForm.message"
                                             :rows="5"
@@ -240,7 +240,7 @@
                                             :class="['w-full']"
                                             placeholder="Tell us more about your project..."
                                         />
-                                    </UFormGroup>
+                                    </UFormField>
                                 </div>
 
                                 <!-- Submit Button -->

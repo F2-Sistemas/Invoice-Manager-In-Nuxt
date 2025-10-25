@@ -48,7 +48,7 @@ const login = async () => {
             </template>
 
             <form @submit.prevent="login" class="space-y-4">
-                <UFormGroup label="Username" required>
+                <UFormField label="Username" required>
                     <UInput
                         v-model="username"
                         type="text"
@@ -56,9 +56,9 @@ const login = async () => {
                         size="lg"
                         :disabled="loading"
                     />
-                </UFormGroup>
+                </UFormField>
 
-                <UFormGroup label="Password" required>
+                <UFormField label="Password" required>
                     <UInput
                         v-model="password"
                         type="password"
@@ -66,7 +66,7 @@ const login = async () => {
                         size="lg"
                         :disabled="loading"
                     />
-                </UFormGroup>
+                </UFormField>
 
                 <UAlert
                     v-if="error"

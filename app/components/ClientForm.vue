@@ -1,110 +1,95 @@
 <script setup lang="ts">
 const props = defineProps<{
-  client?: any
-}>()
+    client?: any;
+}>();
 
-const emit = defineEmits(['saved', 'cancel'])
+const emit = defineEmits(['saved', 'cancel']);
 
 const form = reactive({
-  name: props.client?.name || '',
-  address: props.client?.address || '',
-  city: props.client?.city || '',
-  state: props.client?.state || '',
-  zipCode: props.client?.zipCode || '',
-  country: props.client?.country || '',
-  email: props.client?.email || '',
-  phone: props.client?.phone || '',
-})
+    name: props.client?.name || '',
+    address: props.client?.address || '',
+    city: props.client?.city || '',
+    state: props.client?.state || '',
+    zipCode: props.client?.zipCode || '',
+    country: props.client?.country || '',
+    email: props.client?.email || '',
+    phone: props.client?.phone || '',
+});
 
-const loading = ref(false)
-const error = ref('')
+const loading = ref(false);
+const error = ref('');
 
 const save = async () => {
-  loading.value = true
-  error.value = ''
+    loading.value = true;
+    error.value = '';
 
-  try {
-    if (props.client) {
-      await $fetch(`/api/clients/${props.client.id}`, {
-        method: 'PUT',
-        body: form,
-      })
-    } else {
-      await $fetch('/api/clients', {
-        method: 'POST',
-        body: form,
-      })
+    try {
+        if (props.client) {
+            await $fetch(`/api/clients/${props.client.id}`, {
+                method: 'PUT',
+                body: form,
+            });
+        } else {
+            await $fetch('/api/clients', {
+                method: 'POST',
+                body: form,
+            });
+        }
+
+        emit('saved');
+    } catch (err: any) {
+        error.value = err.data?.message || 'Failed to save client';
+    } finally {
+        loading.value = false;
     }
-
-    emit('saved')
-  } catch (err: any) {
-    error.value = err.data?.message || 'Failed to save client'
-  } finally {
-    loading.value = false
-  }
-}
+};
 </script>
 
 <template>
-  <form @submit.prevent="save" class="space-y-4">
-    <UFormGroup label="Name" required>
-      <UInput v-model="form.name" placeholder="Client name" />
-    </UFormGroup>
+    <form @submit.prevent="save" class="space-y-4">
+        <UFormField label="Name" required>
+            <UInput v-model="form.name" placeholder="Client name" />
+        </UFormField>
 
-    <UFormGroup label="Address" required>
-      <UInput v-model="form.address" placeholder="Street address" />
-    </UFormGroup>
+        <UFormField label="Address" required>
+            <UInput v-model="form.address" placeholder="Street address" />
+        </UFormField>
 
-    <div class="grid grid-cols-2 gap-4">
-      <UFormGroup label="City">
-        <UInput v-model="form.city" placeholder="City" />
-      </UFormGroup>
+        <div class="grid grid-cols-2 gap-4">
+            <UFormField label="City">
+                <UInput v-model="form.city" placeholder="City" />
+            </UFormField>
 
-      <UFormGroup label="State">
-        <UInput v-model="form.state" placeholder="State" />
-      </UFormGroup>
-    </div>
+            <UFormField label="State">
+                <UInput v-model="form.state" placeholder="State" />
+            </UFormField>
+        </div>
 
-    <div class="grid grid-cols-2 gap-4">
-      <UFormGroup label="ZIP Code">
-        <UInput v-model="form.zipCode" placeholder="ZIP Code" />
-      </UFormGroup>
+        <div class="grid grid-cols-2 gap-4">
+            <UFormField label="ZIP Code">
+                <UInput v-model="form.zipCode" placeholder="ZIP Code" />
+            </UFormField>
 
-      <UFormGroup label="Country" required>
-        <UInput v-model="form.country" placeholder="Country" />
-      </UFormGroup>
-    </div>
+            <UFormField label="Country" required>
+                <UInput v-model="form.country" placeholder="Country" />
+            </UFormField>
+        </div>
 
-    <UFormGroup label="Email">
-      <UInput v-model="form.email" type="email" placeholder="email@example.com" />
-    </UFormGroup>
+        <UFormField label="Email">
+            <UInput v-model="form.email" type="email" placeholder="email@example.com" />
+        </UFormField>
 
-    <UFormGroup label="Phone">
-      <UInput v-model="form.phone" placeholder="Phone number" />
-    </UFormGroup>
+        <UFormField label="Phone">
+            <UInput v-model="form.phone" placeholder="Phone number" />
+        </UFormField>
 
-    <UAlert
-      v-if="error"
-      color="red"
-      variant="soft"
-      :title="error"
-    />
+        <UAlert v-if="error" color="red" variant="soft" :title="error" />
 
-    <div class="flex gap-2 justify-end">
-      <UButton
-        type="button"
-        variant="ghost"
-        @click="emit('cancel')"
-      >
-        Cancel
-      </UButton>
-      <UButton
-        type="submit"
-        :loading="loading"
-        :disabled="!form.name || !form.address || !form.country"
-      >
-        {{ client ? 'Update' : 'Create' }}
-      </UButton>
-    </div>
-  </form>
+        <div class="flex gap-2 justify-end">
+            <UButton type="button" variant="ghost" @click="emit('cancel')">Cancel</UButton>
+            <UButton type="submit" :loading="loading" :disabled="!form.name || !form.address || !form.country">
+                {{ client ? 'Update' : 'Create' }}
+            </UButton>
+        </div>
+    </form>
 </template>

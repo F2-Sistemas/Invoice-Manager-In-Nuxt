@@ -78,21 +78,21 @@ const deleteInvoice = async (id: number) => {
             </template>
 
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <UFormGroup label="Client">
+                <UFormField label="Client">
                     <USelect v-model="filters.clientId" :options="clientOptions" />
-                </UFormGroup>
+                </UFormField>
 
-                <UFormGroup label="Status">
+                <UFormField label="Status">
                     <USelect v-model="filters.status" :options="statusOptions" />
-                </UFormGroup>
+                </UFormField>
 
-                <UFormGroup label="From Date">
+                <UFormField label="From Date">
                     <UInput v-model="filters.dateFrom" type="date" />
-                </UFormGroup>
+                </UFormField>
 
-                <UFormGroup label="To Date">
+                <UFormField label="To Date">
                     <UInput v-model="filters.dateTo" type="date" />
-                </UFormGroup>
+                </UFormField>
             </div>
         </UCard>
 

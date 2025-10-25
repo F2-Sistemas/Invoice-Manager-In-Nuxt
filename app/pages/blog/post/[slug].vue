@@ -90,21 +90,21 @@
 
                         <form @submit.prevent="submitContactForm" class="space-y-4">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <UFormGroup label="Name" name="name">
+                                <UFormField label="Name" name="name">
                                     <UInput v-model="contactForm.name" placeholder="Your name" />
-                                </UFormGroup>
-                                <UFormGroup label="Email" name="email">
+                                </UFormField>
+                                <UFormField label="Email" name="email">
                                     <UInput v-model="contactForm.email" type="email" placeholder="your@email.com" />
-                                </UFormGroup>
+                                </UFormField>
                             </div>
 
-                            <UFormGroup label="Phone" name="phone">
+                            <UFormField label="Phone" name="phone">
                                 <UInput v-model="contactForm.phone" placeholder="+1 (555) 000-0000" />
-                            </UFormGroup>
+                            </UFormField>
 
-                            <UFormGroup label="Message" name="message">
+                            <UFormField label="Message" name="message">
                                 <UTextarea v-model="contactForm.message" placeholder="Your message..." rows="5" />
-                            </UFormGroup>
+                            </UFormField>
 
                             <div>
                                 <UButton type="submit" color="primary" size="lg" class="w-full">

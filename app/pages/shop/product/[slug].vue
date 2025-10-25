@@ -99,7 +99,7 @@
                         <UForm :state="contactForm" @submit="submitContact">
                             <div class="space-y-6">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <UFormGroup
+                                    <UFormField
                                         :class="['w-full', 'md:col-span-2']"
                                         :label="$t('contact.form.name')"
                                         name="name"
@@ -111,9 +111,9 @@
                                             size="lg"
                                             :class="['w-full']"
                                         />
-                                    </UFormGroup>
+                                    </UFormField>
 
-                                    <UFormGroup :label="$t('contact.form.email')" name="email" required>
+                                    <UFormField :label="$t('contact.form.email')" name="email" required>
                                         <UInput
                                             v-model="contactForm.email"
                                             type="email"
@@ -121,9 +121,9 @@
                                             size="lg"
                                             :class="['w-full']"
                                         />
-                                    </UFormGroup>
+                                    </UFormField>
 
-                                    <UFormGroup :label="$t('contact.form.phone')" name="phone">
+                                    <UFormField :label="$t('contact.form.phone')" name="phone">
                                         <UInput
                                             v-model="contactForm.phone"
                                             type="tel"
@@ -131,12 +131,12 @@
                                             size="lg"
                                             :class="['w-full']"
                                         />
-                                    </UFormGroup>
+                                    </UFormField>
                                 </div>
 
-                                <UFormGroup :label="$t('contact.form.message')" name="message">
+                                <UFormField :label="$t('contact.form.message')" name="message">
                                     <UTextarea v-model="contactForm.message" :rows="5" size="lg" :class="['w-full']" />
-                                </UFormGroup>
+                                </UFormField>
 
                                 <UButton type="submit" size="xl" block :loading="isSubmitting">
                                     {{ $t('contact.form.send') }}
