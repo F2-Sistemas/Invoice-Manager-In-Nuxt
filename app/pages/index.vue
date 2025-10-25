@@ -1,161 +1,120 @@
-<template>
-    <div>
-        <!-- Hero Section -->
-        <section class="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
-            <UContainer>
-                <div class="max-w-3xl mx-auto text-center">
-                    <h1 class="text-5xl font-bold mb-6">
-                        {{ $t('hero.title') }}
-                    </h1>
-                    <p class="text-2xl mb-4">
-                        {{ $t('hero.subtitle') }}
-                    </p>
-                    <p class="text-lg mb-8 text-primary-100">
-                        {{ $t('hero.description') }}
-                    </p>
-                    <UButton to="/pages/contact" size="xl" color="info" variant="solid">
-                        {{ $t('hero.cta') }}
-                    </UButton>
-                </div>
-            </UContainer>
-        </section>
-
-        <!-- Features Section -->
-        <section class="py-20">
-            <UContainer>
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold mb-4">
-                        {{ $t('features.title') }}
-                    </h2>
-                    <p class="text-xl text-gray-600">
-                        {{ $t('features.description') }}
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <UCard>
-                        <template #header>
-                            <div class="flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
-                                <UIcon name="i-heroicons-users" class="w-8 h-8 text-primary-600" />
-                            </div>
-                        </template>
-                        <h3 class="text-xl font-semibold mb-2">
-                            {{ $t('features.team.title') }}
-                        </h3>
-                        <p class="text-gray-600">
-                            {{ $t('features.team.description') }}
-                        </p>
-                    </UCard>
-
-                    <UCard>
-                        <template #header>
-                            <div class="flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
-                                <UIcon name="i-heroicons-light-bulb" class="w-8 h-8 text-primary-600" />
-                            </div>
-                        </template>
-                        <h3 class="text-xl font-semibold mb-2">
-                            {{ $t('features.model.title') }}
-                        </h3>
-                        <p class="text-gray-600">
-                            {{ $t('features.model.description') }}
-                        </p>
-                    </UCard>
-
-                    <UCard>
-                        <template #header>
-                            <div class="flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
-                                <UIcon name="i-heroicons-rocket-launch" class="w-8 h-8 text-primary-600" />
-                            </div>
-                        </template>
-                        <h3 class="text-xl font-semibold mb-2">
-                            {{ $t('features.ready.title') }}
-                        </h3>
-                        <p class="text-gray-600">
-                            {{ $t('features.ready.description') }}
-                        </p>
-                    </UCard>
-                </div>
-            </UContainer>
-        </section>
-
-        <!-- Portfolio Preview -->
-        <section class="bg-gray-50 py-20">
-            <UContainer>
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold mb-4">
-                        {{ $t('portfolio.title') }}
-                    </h2>
-                    <p class="text-xl text-gray-600">
-                        {{ $t('portfolio.description') }}
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                    <div v-for="caseItem in featuredCases" :key="caseItem.id" class="group cursor-pointer">
-                        <UCard class="h-full transition-transform group-hover:scale-105">
-                            <img
-                                v-if="caseItem?.image"
-                                :src="caseItem?.image"
-                                :alt="caseItem.title[locale]"
-                                class="rounded-xl max-w-5xl mx-auto w-10/12"
-                            />
-                            <div
-                                v-else
-                                class="aspect-video bg-gray-200 rounded-lg mb-4 flex items-center justify-center"
-                            >
-                                <UIcon name="i-heroicons-photo" class="w-16 h-16 text-gray-400" />
-                            </div>
-                            <UBadge color="primary" variant="soft" class="mb-2">
-                                {{ caseItem.category[locale] }}
-                            </UBadge>
-                            <h3 class="text-lg font-semibold mb-2">
-                                {{ caseItem.title[locale] }}
-                            </h3>
-                            <p class="text-gray-600 mb-4">
-                                {{ caseItem.description[locale] }}
-                            </p>
-                            <NuxtLink
-                                :to="`/pages/portfolio/case/${caseItem.slug}`"
-                                class="text-primary-600 hover:text-primary-800 font-semibold inline-flex items-center gap-2"
-                            >
-                                {{ $t('portfolio.viewCase') }}
-                                <UIcon name="i-heroicons-arrow-right" />
-                            </NuxtLink>
-                        </UCard>
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <UButton to="/pages/portfolio" size="lg" variant="outline">
-                        {{ $t('nav.portfolio') }}
-                    </UButton>
-                </div>
-            </UContainer>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="py-20 bg-primary-600 text-white">
-            <UContainer>
-                <div class="text-center max-w-2xl mx-auto">
-                    <h2 class="text-4xl font-bold mb-4">
-                        {{ $t('cta.title') }}
-                    </h2>
-                    <p class="text-xl mb-8">
-                        {{ $t('cta.description') }}
-                    </p>
-                    <UButton to="/pages/contact" size="xl" color="info" variant="solid">
-                        {{ $t('hero.cta') }}
-                    </UButton>
-                </div>
-            </UContainer>
-        </section>
-    </div>
-</template>
-
 <script setup lang="ts">
-const { locale } = useI18n();
+definePageMeta({
+  middleware: ['auth'],
+})
 
-const casesData = await import('~/data/cases.json').then((m) => m.default);
+const { data: stats, refresh } = await useFetch('/api/dashboard/stats')
 
-const featuredCases = computed(() => casesData.slice(0, 3));
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  }).format(value)
+}
+
+const formatDate = (date: string) => {
+  return new Date(date).toLocaleDateString('pt-BR')
+}
+
+const getStatusColor = (status: string) => {
+  const colors: Record<string, string> = {
+    pending: 'yellow',
+    paid: 'green',
+    overdue: 'red',
+    cancelled: 'gray',
+  }
+  return colors[status] || 'gray'
+}
 </script>
+
+<template>
+  <div>
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
+      <p class="text-gray-500 mt-2">Overview of your invoices and clients</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <UCard>
+        <template #header>
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-medium text-gray-500">Total Clients</span>
+            <UIcon name="i-heroicons-users" class="text-primary-500" />
+          </div>
+        </template>
+        <div class="text-2xl font-bold">{{ stats?.totalClients || 0 }}</div>
+      </UCard>
+
+      <UCard>
+        <template #header>
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-medium text-gray-500">Total Invoices</span>
+            <UIcon name="i-heroicons-document-text" class="text-blue-500" />
+          </div>
+        </template>
+        <div class="text-2xl font-bold">{{ stats?.totalInvoices || 0 }}</div>
+        <div class="text-sm text-gray-500 mt-2">
+          <span class="text-yellow-600">{{ stats?.pendingInvoices || 0 }} pending</span> · 
+          <span class="text-green-600">{{ stats?.paidInvoices || 0 }} paid</span>
+        </div>
+      </UCard>
+
+      <UCard>
+        <template #header>
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-medium text-gray-500">Total Revenue</span>
+            <UIcon name="i-heroicons-currency-dollar" class="text-green-500" />
+          </div>
+        </template>
+        <div class="text-2xl font-bold">{{ formatCurrency(stats?.totalRevenue || 0) }}</div>
+        <div class="text-sm text-green-600 mt-2">From paid invoices</div>
+      </UCard>
+
+      <UCard>
+        <template #header>
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-medium text-gray-500">Pending Revenue</span>
+            <UIcon name="i-heroicons-clock" class="text-yellow-500" />
+          </div>
+        </template>
+        <div class="text-2xl font-bold">{{ formatCurrency(stats?.pendingRevenue || 0) }}</div>
+        <div class="text-sm text-yellow-600 mt-2">Awaiting payment</div>
+      </UCard>
+    </div>
+
+    <UCard>
+      <template #header>
+        <h2 class="text-lg font-semibold">Recent Invoices</h2>
+      </template>
+
+      <UTable
+        :rows="stats?.recentInvoices || []"
+        :columns="[
+          { key: 'id', label: 'Invoice #' },
+          { key: 'client.name', label: 'Client' },
+          { key: 'total', label: 'Amount' },
+          { key: 'status', label: 'Status' },
+          { key: 'issueDate', label: 'Issue Date' },
+        ]"
+      >
+        <template #id-data="{ row }">
+          <span class="font-mono">C{{ row.clientId }}-{{ row.sequentialNumber }}</span>
+        </template>
+
+        <template #total-data="{ row }">
+          {{ formatCurrency(Number(row.total)) }}
+        </template>
+
+        <template #status-data="{ row }">
+          <UBadge :color="getStatusColor(row.status)" variant="soft">
+            {{ row.status }}
+          </UBadge>
+        </template>
+
+        <template #issueDate-data="{ row }">
+          {{ formatDate(row.issueDate) }}
+        </template>
+      </UTable>
+    </UCard>
+  </div>
+</template>

@@ -5,7 +5,6 @@
                 :transition="{
                     name: 'my',
                     mode: 'out-in',
-                    onBeforeEnter,
                 }"
             />
         </NuxtLayout>
@@ -14,18 +13,12 @@
 
 <script setup lang="ts">
 useHead({
-    title: 'Creative Kibbutz - Your Partner in Community Success',
-    meta: [{ name: 'description', content: 'Marketing, Design, and Web Services for Jewish Organizations' }],
+    title: 'Invoice Manager - F2 Sistemas',
+    meta: [{ name: 'description', content: 'Invoice Management System' }],
     htmlAttrs: {
         lang: 'en',
     },
 });
-
-const { finalizePendingLocaleChange } = useI18n();
-
-const onBeforeEnter = async () => {
-    await finalizePendingLocaleChange();
-};
 </script>
 
 <style>
