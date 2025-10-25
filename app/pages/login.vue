@@ -3,8 +3,8 @@ definePageMeta({
     layout: false,
 });
 
-const username = ref('');
-const password = ref('');
+const username = ref('admin');
+const password = ref('admin123');
 const error = ref('');
 const loading = ref(false);
 

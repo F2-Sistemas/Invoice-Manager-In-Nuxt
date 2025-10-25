@@ -105,35 +105,27 @@ const getStatusColor = (status: string) => {
                 No recent invoices
             </div>
 
-            <UTable
-                v-else
-                :rows="stats.recentInvoices"
-                :columns="[
-                    { key: 'id', label: 'Invoice #', width: '150px' },
-                    { key: 'client.name', label: 'Client', width: '200px' },
-                    { key: 'total', label: 'Amount', width: '120px' },
-                    { key: 'status', label: 'Status', width: '120px' },
-                    { key: 'issueDate', label: 'Issue Date', width: '150px' },
-                ]"
-            >
-                <template #id-data="{ row }">
-                    <span class="font-mono">C{{ row.clientId }}-{{ row.sequentialNumber }}</span>
-                </template>
-
-                <template #total-data="{ row }">
-                    {{ formatCurrency(Number(row.total)) }}
-                </template>
-
-                <template #status-data="{ row }">
-                    <UBadge :color="getStatusColor(row.status)" variant="soft">
-                        {{ row.status }}
-                    </UBadge>
-                </template>
-
-                <template #issueDate-data="{ row }">
-                    {{ formatDate(row.issueDate) }}
-                </template>
-            </UTable>
+            <div v-else class="space-y-3">
+                <div
+                    v-for="invoice in stats.recentInvoices"
+                    :key="invoice.id"
+                    class="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"
+                >
+                    <div>
+                        <p class="font-mono font-semibold">C{{ invoice.clientId }}-{{ invoice.sequentialNumber }}</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">{{ invoice.client.name }}</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-semibold">{{ formatCurrency(Number(invoice.total)) }}</p>
+                        <div class="flex items-center gap-2 justify-end mt-1">
+                            <UBadge :color="getStatusColor(invoice.status)" variant="soft">
+                                {{ invoice.status }}
+                            </UBadge>
+                            <span class="text-xs text-gray-500">{{ formatDate(invoice.issueDate) }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </UCard>
     </div>
 </template>
