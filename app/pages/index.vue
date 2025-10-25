@@ -3,7 +3,7 @@ definePageMeta({
     middleware: ['auth'],
 });
 
-const { data: stats, refresh } = await useFetch('/api/dashboard/stats');
+const { data: stats, refresh, error } = await useFetch('/api/dashboard/stats');
 
 const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('pt-BR', {
@@ -33,6 +33,16 @@ const getStatusColor = (status: string) => {
             <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
             <p class="text-gray-500 mt-2">Overview of your invoices and clients</p>
         </div>
+
+        <UAlert
+            v-if="error"
+            color="red"
+            variant="soft"
+            title="Failed to load dashboard data"
+            :description="'Please refresh the page or try again later'"
+            :close-button="{ icon: 'i-heroicons-x-mark-20-solid', color: 'red', variant: 'link' }"
+            class="mb-6"
+        />
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <UCard>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
     layout: false,
-    middleware: ['auth'],
 });
 
 const username = ref('');
@@ -20,17 +19,19 @@ const login = async () => {
                 username: username.value,
                 password: password.value,
             },
-        });
+        } as any);
 
-        if (response.success) {
-            // Refresh user session after successful login
+        // Login successful - refresh session and navigate
+        if (response && response.success) {
             const { refresh } = useUserSession();
             await refresh();
-            // Navigate to dashboard
             await navigateTo('/');
         }
     } catch (err: any) {
-        error.value = err.data?.message || 'Invalid credentials';
+        // Extract error message
+        const errorMessage = err?.data?.message || err?.message || 'Invalid credentials';
+        error.value = errorMessage;
+        console.error('Login error:', errorMessage);
     } finally {
         loading.value = false;
     }
