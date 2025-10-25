@@ -2,6 +2,8 @@
 
 A full-stack invoice management system built with Nuxt 4, Vue 3, Prisma, and PostgreSQL.
 
+> [en-US](./README.md) | [pt-BR](./README.pt-BR.md)
+
 ## Features
 
 - 🔐 **Authentication**: Session-based authentication with admin user
@@ -23,7 +25,7 @@ A full-stack invoice management system built with Nuxt 4, Vue 3, Prisma, and Pos
 
 ## Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - PostgreSQL database
 - npm or yarn
 

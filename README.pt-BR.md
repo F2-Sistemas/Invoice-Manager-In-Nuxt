@@ -2,6 +2,8 @@
 
 Um sistema fullstack de gerenciamento de faturas construído com Nuxt 4, Vue 3, Prisma e PostgreSQL.
 
+> [en-US](./README.md) | [pt-BR](./README.pt-BR.md)
+
 ## Funcionalidades
 
 - 🔐 **Autenticação**: Autenticação baseada em sessão com usuário admin
