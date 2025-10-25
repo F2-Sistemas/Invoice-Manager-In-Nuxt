@@ -99,7 +99,8 @@ const getStatusColor = (status: string) => {
             </template>
 
             <UTable
-                :rows="stats?.recentInvoices || []"
+                v-if="stats?.recentInvoices && stats.recentInvoices.length > 0"
+                :rows="stats.recentInvoices"
                 :columns="[
                     { key: 'id', label: 'Invoice #' },
                     { key: 'client.name', label: 'Client' },
