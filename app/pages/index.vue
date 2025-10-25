@@ -98,15 +98,22 @@ const getStatusColor = (status: string) => {
                 <h2 class="text-lg font-semibold">Recent Invoices</h2>
             </template>
 
+            <div
+                v-if="!stats?.recentInvoices || stats.recentInvoices.length === 0"
+                class="text-center py-8 text-gray-500"
+            >
+                No recent invoices
+            </div>
+
             <UTable
-                v-if="stats?.recentInvoices && stats.recentInvoices.length > 0"
+                v-else
                 :rows="stats.recentInvoices"
                 :columns="[
-                    { key: 'id', label: 'Invoice #' },
-                    { key: 'client.name', label: 'Client' },
-                    { key: 'total', label: 'Amount' },
-                    { key: 'status', label: 'Status' },
-                    { key: 'issueDate', label: 'Issue Date' },
+                    { key: 'id', label: 'Invoice #', width: '150px' },
+                    { key: 'client.name', label: 'Client', width: '200px' },
+                    { key: 'total', label: 'Amount', width: '120px' },
+                    { key: 'status', label: 'Status', width: '120px' },
+                    { key: 'issueDate', label: 'Issue Date', width: '150px' },
                 ]"
             >
                 <template #id-data="{ row }">
