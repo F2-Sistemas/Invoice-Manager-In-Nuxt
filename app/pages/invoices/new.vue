@@ -51,6 +51,8 @@ const form = reactive({
 
 const loading = ref(false);
 const error = ref('');
+const isProductSelectorOpen = ref(false);
+const currentItemIndex = ref<number | null>(null);
 
 const clientOptions = computed(() => (clients.value || []).map((c: any) => ({ label: c.name, value: c.id })));
 
@@ -118,6 +120,21 @@ const save = async () => {
 
 const selectAClient = () => {
     //
+};
+
+const openProductSelector = (index: number) => {
+    currentItemIndex.value = index;
+    isProductSelectorOpen.value = true;
+};
+
+const onProductSelected = (product: any) => {
+    if (currentItemIndex.value !== null) {
+        const item = form.items[currentItemIndex.value];
+        item.description = product.name;
+        item.unity = product.unity;
+        item.unitPrice = product.unitPrice;
+        item.quantity = 1;
+    }
 };
 
 // Set default due date (5 days from now)
@@ -226,7 +243,17 @@ onMounted(() => {
 
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                             <UFormField label="Description" required class="md:col-span-4">
-                                <UInput v-model="item.description" placeholder="Item description" class="w-full" />
+                                <UFieldGroup class="w-full">
+                                    <UInput v-model="item.description" placeholder="Item description" class="w-full" />
+                                    <UButton
+                                        type="button"
+                                        icon="i-lucide-package"
+                                        size="sm"
+                                        @click="openProductSelector(index)"
+                                        class="cursor-pointer"
+                                        title="Select from products/services"
+                                    />
+                                </UFieldGroup>
                             </UFormField>
 
                             <UFormField label="Unity" required>
@@ -302,5 +329,7 @@ onMounted(() => {
                 </UButton>
             </div>
         </form>
+
+        <ProductSelector v-model="isProductSelectorOpen" @select="onProductSelected" />
     </div>
 </template>
