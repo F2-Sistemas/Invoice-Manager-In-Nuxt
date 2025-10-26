@@ -21,7 +21,9 @@ const props = defineProps<Props>();
 const emit = defineEmits<Emits>();
 
 const search = ref('');
-const { data: products, status } = await useFetch('/api/products');
+const products = ref<Product[]>([]);
+const status = ref<'idle' | 'pending' | 'success' | 'error'>('idle');
+const error = ref<string | null>(null);
 
 const filteredProducts = computed(() => {
     if (!search.value) return products.value || [];
@@ -32,10 +34,37 @@ const filteredProducts = computed(() => {
     );
 });
 
+const loadProducts = async () => {
+    if (status.value === 'success' && products.value.length > 0) {
+        return;
+    }
+
+    status.value = 'pending';
+    error.value = null;
+
+    try {
+        const data = await $fetch<Product[]>('/api/products');
+        products.value = data || [];
+        status.value = 'success';
+    } catch (err) {
+        error.value = err instanceof Error ? err.message : 'Failed to load products';
+        status.value = 'error';
+    }
+};
+
 const selectProduct = (product: Product) => {
     emit('select', product);
     emit('update:modelValue', false);
 };
+
+watch(
+    () => props.modelValue,
+    (isOpen) => {
+        if (isOpen) {
+            loadProducts();
+        }
+    }
+);
 </script>
 
 <template>
@@ -48,10 +77,23 @@ const selectProduct = (product: Product) => {
             </template>
 
             <div class="space-y-4">
-                <UInput v-model="search" icon="i-lucide-search" placeholder="Search products/services..." autofocus />
+                <UInput
+                    v-model="search"
+                    icon="i-lucide-search"
+                    placeholder="Search products/services..."
+                    :disabled="status === 'pending'"
+                    autofocus
+                />
 
                 <div v-if="status === 'pending'" class="flex justify-center py-8">
-                    <UIcon name="i-lucide-loader" class="animate-spin" />
+                    <div class="flex flex-col items-center gap-2">
+                        <UIcon name="i-lucide-loader" class="animate-spin text-lg" />
+                        <p class="text-sm text-neutral-500">Loading products...</p>
+                    </div>
+                </div>
+
+                <div v-else-if="status === 'error'" class="py-8">
+                    <UAlert color="error" title="Error loading products" :description="error" />
                 </div>
 
                 <div
@@ -62,7 +104,7 @@ const selectProduct = (product: Product) => {
                         v-for="product in filteredProducts"
                         :key="product.id"
                         @click="selectProduct(product)"
-                        class="w-full text-left p-3 rounded-lg border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+                        class="w-full text-left p-3 rounded-lg border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
                     >
                         <div class="flex justify-between items-start">
                             <div class="flex-1">
@@ -77,7 +119,9 @@ const selectProduct = (product: Product) => {
                     </button>
                 </div>
 
-                <div v-else class="text-center py-8 text-neutral-500">No products found</div>
+                <div v-else-if="status === 'success'" class="text-center py-8 text-neutral-500">No products found</div>
+
+                <div v-else class="text-center py-8 text-neutral-500">Click to load products</div>
             </div>
 
             <template #footer>
