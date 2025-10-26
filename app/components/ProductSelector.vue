@@ -17,8 +17,8 @@ interface Emits {
     (e: 'select', product: Product): void;
 }
 
-defineProps<Props>();
-defineEmits<Emits>();
+const props = defineProps<Props>();
+const emit = defineEmits<Emits>();
 
 const search = ref('');
 const { data: products, status } = await useFetch('/api/products');
@@ -36,8 +36,6 @@ const selectProduct = (product: Product) => {
     emit('select', product);
     emit('update:modelValue', false);
 };
-
-const emit = defineEmits<Emits>();
 </script>
 
 <template>

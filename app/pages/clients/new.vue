@@ -65,7 +65,7 @@ const goBack = () => {
         </template>
 
         <template #body>
-            <form @submit.prevent="save" class="space-y-6 w-full md:w-2/3 lg:w-1/2 mx-auto">
+            <form @submit.prevent="save" class="space-y-6 w-full md:w-10/12 mx-auto">
                 <UCard class="w-full">
                     <template #header>
                         <h3 class="font-semibold">Client Information</h3>
@@ -73,40 +73,45 @@ const goBack = () => {
 
                     <div class="space-y-4">
                         <UFormField label="Name" required>
-                            <UInput v-model="form.name" placeholder="Client name" />
+                            <UInput v-model="form.name" placeholder="Client name" class="w-full" />
                         </UFormField>
 
                         <UFormField label="Address" required>
-                            <UInput v-model="form.address" placeholder="Street address" />
+                            <UInput v-model="form.address" placeholder="Street address" class="w-full" />
                         </UFormField>
 
-                        <div class="grid grid-cols-2 gap-4">
-                            <UFormField label="City">
-                                <UInput v-model="form.city" placeholder="City" />
+                        <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
+                            <UFormField label="Country" required>
+                                <UInput v-model="form.country" placeholder="Country" class="w-full" />
+                            </UFormField>
+
+                            <UFormField label="City" class="col-span-2 md:col-span-3">
+                                <UInput v-model="form.city" placeholder="City" class="w-full" />
                             </UFormField>
 
                             <UFormField label="State">
-                                <UInput v-model="form.state" placeholder="State" />
+                                <UInput v-model="form.state" placeholder="State" class="w-full" />
+                            </UFormField>
+
+                            <UFormField label="ZIP Code">
+                                <UInput v-model="form.zipCode" placeholder="ZIP Code" class="w-full" />
                             </UFormField>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
-                            <UFormField label="ZIP Code">
-                                <UInput v-model="form.zipCode" placeholder="ZIP Code" />
+                            <UFormField label="Email">
+                                <UInput
+                                    v-model="form.email"
+                                    type="email"
+                                    placeholder="email@example.com"
+                                    class="w-full"
+                                />
                             </UFormField>
 
-                            <UFormField label="Country" required>
-                                <UInput v-model="form.country" placeholder="Country" />
+                            <UFormField label="Phone">
+                                <UInput v-model="form.phone" placeholder="Phone number" class="w-full" />
                             </UFormField>
                         </div>
-
-                        <UFormField label="Email">
-                            <UInput v-model="form.email" type="email" placeholder="email@example.com" />
-                        </UFormField>
-
-                        <UFormField label="Phone">
-                            <UInput v-model="form.phone" placeholder="Phone number" />
-                        </UFormField>
                     </div>
                 </UCard>
 
