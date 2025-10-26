@@ -108,6 +108,12 @@ Follow Nuxt UI's three foundational principles:
 - Built on **Reka UI** primitives for accessibility and semantic HTML
 - Use MCP server `nuxt-ui-remote` to reference component APIs before implementation
 
+### USelect Component
+- **Component Name**: `USelect` and `USelectMenu` use `items` attribute to set options (not `options`). Example:
+    ```vue
+    <USelect :items="items" />
+    ```
+
 ### DropdownMenu Component
 - **Component Name**: `DropdownMenu` and `DropdownMenuItem` (not `UDropdown`)
 - **Associated Type**: `DropdownMenuItem`
