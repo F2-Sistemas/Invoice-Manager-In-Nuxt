@@ -1,82 +1,93 @@
 <script setup lang="ts">
-const { user, clear } = useUserSession();
+import type { NavigationMenuItem } from '@nuxt/ui';
 
-const logout = async () => {
-    await $fetch('/api/auth/logout', { method: 'POST' });
-    await clear();
-    await navigateTo('/login');
-};
+const route = useRoute();
+
+const open = ref(false);
 
 const links = [
+    [
+        {
+            label: 'Dashboard',
+            icon: 'i-lucide-home',
+            to: '/',
+            onSelect: () => {
+                open.value = false;
+            },
+        },
+        {
+            label: 'Invoices',
+            icon: 'i-lucide-file-text',
+            to: '/invoices',
+            onSelect: () => {
+                open.value = false;
+            },
+        },
+        {
+            label: 'Clients',
+            icon: 'i-lucide-users',
+            to: '/clients',
+            onSelect: () => {
+                open.value = false;
+            },
+        },
+    ],
+    [
+        {
+            label: 'Privacy Policy',
+            icon: 'i-lucide-shield',
+            to: '/privacy',
+            onSelect: () => {
+                open.value = false;
+            },
+        },
+        {
+            label: 'Help & Support',
+            icon: 'i-lucide-info',
+            to: 'https://github.com/nuxt-ui-templates/dashboard',
+            target: '_blank',
+        },
+    ],
+] satisfies NavigationMenuItem[][];
+
+const groups = computed(() => [
     {
-        label: 'Dashboard',
-        icon: 'i-heroicons-home',
-        to: '/',
+        id: 'links',
+        label: 'Go to',
+        items: links.flat(),
     },
-    {
-        label: 'Clients',
-        icon: 'i-heroicons-users',
-        to: '/clients',
-    },
-    {
-        label: 'Invoices',
-        icon: 'i-heroicons-document-text',
-        to: '/invoices',
-    },
-];
+]);
 </script>
 
 <template>
-    <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
-        <header class="bg-white dark:bg-gray-800 shadow">
-            <div class="mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center py-4">
-                    <div class="flex items-center space-x-8">
-                        <h1 class="text-xl font-bold text-gray-900 dark:text-white">Invoice Manager</h1>
-                        <nav class="hidden md:flex space-x-4">
-                            <UButton
-                                v-for="link in links"
-                                :key="link.to"
-                                :to="link.to"
-                                variant="ghost"
-                                :icon="link.icon"
-                            >
-                                {{ link.label }}
-                            </UButton>
-                        </nav>
-                    </div>
+    <UDashboardGroup unit="rem">
+        <UDashboardSidebar
+            id="default"
+            v-model:open="open"
+            collapsible
+            resizable
+            class="bg-elevated/25"
+            :ui="{ footer: 'lg:border-t lg:border-default' }"
+        >
+            <template #header="{ collapsed }">
+                <TeamsMenu :collapsed="collapsed" />
+            </template>
 
-                    <DropdownMenu
-                        :items="[
-                            [
-                                {
-                                    label: user?.username || 'User',
-                                    disabled: true,
-                                },
-                            ],
-                            [
-                                {
-                                    label: 'Sign out',
-                                    icon: 'i-heroicons-arrow-right-on-rectangle',
-                                    click: logout,
-                                },
-                            ],
-                        ]"
-                    >
-                        <UButton
-                            icon="i-heroicons-user-circle"
-                            variant="ghost"
-                            trailing-icon="i-heroicons-chevron-down"
-                        >
-                            {{ user?.username }}
-                        </UButton>
-                    </DropdownMenu>
-                </div>
-            </div>
-        </header>
+            <template #default="{ collapsed }">
+                <UDashboardSearchButton :collapsed="collapsed" class="bg-transparent ring-default" />
 
-        <main class="mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <slot />
-        </main>
-    </div>
+                <UNavigationMenu :collapsed="collapsed" :items="links[0]" orientation="vertical" tooltip popover />
+
+                <UNavigationMenu :collapsed="collapsed" :items="links[1]" orientation="vertical" class="mt-auto" />
+            </template>
+
+            <template #footer="{ collapsed }">
+                <UserMenu :collapsed="collapsed" />
+            </template>
+        </UDashboardSidebar>
+
+        <UDashboardSearch :groups="groups" />
+
+        <slot />
+    </UDashboardGroup>
 </template>

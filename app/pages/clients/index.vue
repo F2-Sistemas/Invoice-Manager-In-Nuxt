@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import type { DropdownMenuItem } from '@nuxt/ui';
+
 definePageMeta({
     middleware: ['auth'],
 });
 
-const { data: clients, refresh } = await useFetch('/api/clients');
+const toast = useToast();
+
+const { data: clients, refresh, status: loadingStatus } = await useFetch('/api/clients');
 const search = ref('');
 const isOpen = ref(false);
 const editingClient = ref<any>(null);
@@ -15,7 +19,7 @@ const filteredClients = computed(() => {
         (client: any) =>
             client.name.toLowerCase().includes(searchLower) ||
             client.email?.toLowerCase().includes(searchLower) ||
-            client.country.toLowerCase().includes(searchLower)
+            client.country?.toLowerCase().includes(searchLower)
     );
 });
 
@@ -30,13 +34,20 @@ const openEditDialog = (client: any) => {
 };
 
 const deleteClient = async (id: number) => {
-    if (!confirm('Are you sure you want to delete this client?')) return;
-
     try {
         await $fetch(`/api/clients/${id}`, { method: 'DELETE' });
         await refresh();
+        toast.add({
+            title: 'Client deleted',
+            description: 'The client has been deleted successfully.',
+            color: 'success',
+        });
     } catch (error: any) {
-        alert(error.data?.message || 'Failed to delete client');
+        toast.add({
+            title: 'Error',
+            description: error.data?.message || 'Failed to delete client',
+            color: 'error',
+        });
     }
 };
 
@@ -44,28 +55,54 @@ const onSaved = () => {
     isOpen.value = false;
     refresh();
 };
+
+function getRowItems(row: any) {
+    return [
+        {
+            type: 'label',
+            label: 'Actions',
+        },
+        {
+            label: 'Edit client',
+            icon: 'i-lucide-pencil',
+            onSelect() {
+                openEditDialog(row);
+            },
+        },
+        {
+            type: 'separator',
+        },
+        {
+            label: 'Delete client',
+            icon: 'i-lucide-trash',
+            color: 'error',
+            onSelect() {
+                deleteClient(row.id);
+            },
+        },
+    ];
+}
 </script>
 
 <template>
-    <div>
-        <div class="flex justify-between items-center mb-8">
-            <div>
-                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Clients</h1>
-                <p class="text-gray-500 mt-2">Manage your clients</p>
-            </div>
-            <UButton icon="i-heroicons-plus" @click="openCreateDialog">New Client</UButton>
-        </div>
+    <UDashboardPanel id="clients">
+        <template #header>
+            <UDashboardNavbar title="Clients">
+                <template #leading>
+                    <UDashboardSidebarCollapse />
+                </template>
 
-        <UCard>
-            <template #header>
-                <UInput
-                    v-model="search"
-                    icon="i-heroicons-magnifying-glass"
-                    placeholder="Search clients..."
-                    class="max-w-md"
-                />
-            </template>
+                <template #right>
+                    <UButton icon="i-lucide-plus" @click="openCreateDialog" size="md" class="rounded-full" />
+                </template>
+            </UDashboardNavbar>
 
+            <UDashboardToolbar>
+                <UInput v-model="search" icon="i-lucide-search" placeholder="Search clients..." class="max-w-sm" />
+            </UDashboardToolbar>
+        </template>
+
+        <template #body>
             <UTable
                 :rows="filteredClients"
                 :columns="[
@@ -73,38 +110,49 @@ const onSaved = () => {
                     { key: 'email', label: 'Email', id: 'email' },
                     { key: 'country', label: 'Country', id: 'country' },
                     { key: '_count.invoices', label: 'Invoices', id: 'invoicesCount' },
-                    { key: 'actions', label: 'Actions', id: 'actions', class: 'text-right' },
+                    { key: 'actions', label: 'Actions', id: 'actions' },
                 ]"
+                :loading="loadingStatus === 'pending'"
+                :ui="{
+                    base: 'table-fixed border-separate border-spacing-0',
+                    thead: '[&>tr]:bg-elevated/50 [&>tr]:after:content-none',
+                    tbody: '[&>tr]:last:[&>td]:border-b-0',
+                    th: 'py-2 first:rounded-l-lg last:rounded-r-lg border-y border-default first:border-l last:border-r',
+                    td: 'border-b border-default',
+                    separator: 'h-0',
+                }"
             >
                 <template #_count.invoices-data="{ row }">
-                    {{ row._count.invoices }}
+                    <UBadge variant="subtle" color="neutral">
+                        {{ row._count?.invoices || 0 }}
+                    </UBadge>
                 </template>
 
                 <template #actions-data="{ row }">
-                    <div class="flex gap-2 justify-end">
-                        <UButton icon="i-heroicons-pencil" variant="ghost" size="sm" @click="openEditDialog(row)" />
-                        <UButton
-                            icon="i-heroicons-trash"
-                            variant="ghost"
-                            size="sm"
-                            color="red"
-                            @click="deleteClient(row.id)"
-                        />
+                    <div class="text-right">
+                        <UDropdownMenu
+                            :items="getRowItems(row)"
+                            :content="{
+                                align: 'end',
+                            }"
+                        >
+                            <UButton icon="i-lucide-ellipsis-vertical" color="neutral" variant="ghost" />
+                        </UDropdownMenu>
                     </div>
                 </template>
             </UTable>
+        </template>
+    </UDashboardPanel>
+
+    <UModal v-model="isOpen">
+        <UCard>
+            <template #header>
+                <h3 class="text-lg font-semibold">
+                    {{ editingClient ? 'Edit Client' : 'New Client' }}
+                </h3>
+            </template>
+
+            <ClientForm :client="editingClient" @saved="onSaved" @cancel="isOpen = false" />
         </UCard>
-
-        <UModal v-model="isOpen">
-            <UCard>
-                <template #header>
-                    <h3 class="text-lg font-semibold">
-                        {{ editingClient ? 'Edit Client' : 'New Client' }}
-                    </h3>
-                </template>
-
-                <ClientForm :client="editingClient" @saved="onSaved" @cancel="isOpen = false" />
-            </UCard>
-        </UModal>
-    </div>
+    </UModal>
 </template>

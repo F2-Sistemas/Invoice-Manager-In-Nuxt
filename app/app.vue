@@ -1,33 +1,38 @@
-<template>
-    <div>
-        <NuxtLayout>
-            <NuxtPage
-                :transition="{
-                    name: 'my',
-                    mode: 'out-in',
-                }"
-            />
-        </NuxtLayout>
-    </div>
-</template>
-
 <script setup lang="ts">
+const colorMode = useColorMode();
+
+const color = computed(() => (colorMode.value === 'dark' ? '#1b1718' : 'white'));
+
 useHead({
-    title: 'Invoice Manager - F2 Sistemas',
-    meta: [{ name: 'description', content: 'Invoice Management System' }],
+    meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { key: 'theme-color', name: 'theme-color', content: color },
+    ],
+    link: [{ rel: 'icon', href: '/favicon.ico' }],
     htmlAttrs: {
         lang: 'en',
     },
 });
+
+const title = 'Invoice Manager - F2 Sistemas';
+const description = 'Professional invoice management system built with Nuxt UI';
+
+useSeoMeta({
+    title,
+    description,
+    ogTitle: title,
+    ogDescription: description,
+    twitterCard: 'summary_large_image',
+});
 </script>
 
-<style>
-.my-enter-active,
-.my-leave-active {
-    transition: opacity 0.3s;
-}
-.my-enter,
-.my-leave-active {
-    opacity: 0;
-}
-</style>
+<template>
+    <UApp>
+        <NuxtLoadingIndicator />
+
+        <NuxtLayout>
+            <NuxtPage />
+        </NuxtLayout>
+    </UApp>
+</template>

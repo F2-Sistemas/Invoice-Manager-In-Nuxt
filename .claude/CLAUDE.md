@@ -136,6 +136,107 @@ Follow Nuxt UI's three foundational principles:
 - **Nuxt UI implementation docs**: https://ui.nuxt.com/llms.txt
 - **Reka UI Foundation**: https://reka-ui.com/docs/components/dropdown-menu
 
+## Design System & Dashboard Layout
+
+### Dashboard Components Architecture
+The project follows the **Nuxt UI Dashboard Template** design system with the following structure:
+
+**Layout Structure** (app/layouts/default.vue):
+- `UDashboardGroup` - Root container for dashboard layout with responsive grid
+- `UDashboardSidebar` - Collapsible, resizable sidebar with company/user menus
+  - Header: TeamsMenu for company/workspace selection
+  - Default: UDashboardSearchButton, UNavigationMenu for navigation
+  - Footer: UserMenu for user settings and theme switching
+- `UDashboardSearch` - Command palette/global search integration
+- `slot` - Page content area
+
+**Page Components**:
+- `UDashboardPanel` - Main page container with header and body sections
+  - Header: `UDashboardNavbar` for page title and actions
+  - Optional: `UDashboardToolbar` for filters and secondary controls
+  - Body: Page-specific content (tables, cards, etc.)
+
+### Core Components Created
+
+1. **TeamsMenu** (`app/components/TeamsMenu.vue`)
+   - Dropdown for selecting workspace/company
+   - Shows company avatar and name
+   - Options to create/manage teams
+   - Responsive to collapsed sidebar state
+
+2. **UserMenu** (`app/components/UserMenu.vue`)
+   - User profile dropdown with full settings menu
+   - Theme color selection (primary and neutral colors)
+   - Light/dark mode toggle
+   - Link to documentation and GitHub
+   - Logout functionality
+
+### Composables
+
+**useDashboard** (`app/composables/useDashboard.ts`):
+- `isNotificationsSlideoverOpen` - Controls notifications panel visibility
+- Centralized state for dashboard interactions
+
+### Type Definitions (`app/types/index.ts`)
+
+Defines TypeScript interfaces for:
+- `Invoice` - Invoice document with line items
+- `Client` - Client/customer information
+- `LineItem` - Invoice line item details
+- `User` - User account information
+
+### Color Scheme & Theming
+
+- **Primary Color**: `blue` (changeable via UserMenu)
+- **Neutral Color**: `slate` (changeable via UserMenu)
+- **Color Options**: 17 primary colors + 5 neutral variants
+- **Dark Mode**: Built-in with automatic theme switching
+- **Icon Library**: Lucide icons (i-lucide-* prefix)
+
+### Pages Structure
+
+**Home Page** (`/` - app/pages/index.vue):
+- Stats cards: Total Invoices, Revenue, Clients, Pending Revenue
+- Recent invoices list with status badges
+- Quick action buttons for common tasks
+- UDashboardPanel with navbar and action menu
+
+**Invoices Page** (`/invoices` - app/pages/invoices/index.vue):
+- UDashboardPanel with filters in toolbar
+- Advanced UTable with column filtering, sorting
+- Dropdown menu actions (view, delete) per row
+- Loading states and error handling
+- Toast notifications for actions
+
+**Clients Page** (`/clients` - app/pages/clients/index.vue):
+- UDashboardPanel with search filtering
+- Client list with invoice counts
+- Dropdown menu actions (edit, delete) per row
+- Modal for create/edit client forms
+- Toast notifications for actions
+
+### Table Styling Pattern
+
+All tables follow this UI configuration for consistency:
+```typescript
+:ui="{
+    base: 'table-fixed border-separate border-spacing-0',
+    thead: '[&>tr]:bg-elevated/50 [&>tr]:after:content-none',
+    tbody: '[&>tr]:last:[&>td]:border-b-0',
+    th: 'py-2 first:rounded-l-lg last:rounded-r-lg border-y border-default first:border-l last:border-r',
+    td: 'border-b border-default',
+    separator: 'h-0'
+}"
+```
+
+### Color Semantic Mapping
+
+- **success**: Green - For positive actions/paid status
+- **warning**: Amber/Yellow - For draft/pending status
+- **error**: Red - For cancellation/delete actions
+- **info**: Blue - For informational/sent status
+- **neutral**: Default - For secondary actions
+
 ## MCP Servers
 ### Available MCP Servers
 - **nuxt-ui-remote**: Provides access to Nuxt UI components, composables, templates, and documentation

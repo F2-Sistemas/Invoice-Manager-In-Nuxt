@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import type { DropdownMenuItem } from '@nuxt/ui';
+
 definePageMeta({
     middleware: ['auth'],
 });
 
+const toast = useToast();
 const filters = reactive({
     clientId: '',
     status: '',
@@ -10,7 +13,11 @@ const filters = reactive({
     dateTo: '',
 });
 
-const { data: invoices, refresh } = await useFetch('/api/invoices', {
+const {
+    data: invoices,
+    refresh,
+    status: loadingStatus,
+} = await useFetch('/api/invoices', {
     query: filters,
 });
 
@@ -29,12 +36,12 @@ const formatDate = (date: string) => {
 
 const getStatusColor = (status: string) => {
     const colors: Record<string, string> = {
-        pending: 'yellow',
-        paid: 'green',
-        overdue: 'red',
-        cancelled: 'gray',
+        draft: 'warning',
+        sent: 'info',
+        paid: 'success',
+        cancelled: 'error',
     };
-    return colors[status] || 'gray';
+    return colors[status] || 'neutral';
 };
 
 const clientOptions = computed(() => [
@@ -44,59 +51,86 @@ const clientOptions = computed(() => [
 
 const statusOptions = [
     { label: 'All Statuses', value: '' },
-    { label: 'Pending', value: 'pending' },
+    { label: 'Draft', value: 'draft' },
+    { label: 'Sent', value: 'sent' },
     { label: 'Paid', value: 'paid' },
-    { label: 'Overdue', value: 'overdue' },
     { label: 'Cancelled', value: 'cancelled' },
 ];
 
 const deleteInvoice = async (id: number) => {
-    if (!confirm('Are you sure you want to delete this invoice?')) return;
-
     try {
         await $fetch(`/api/invoices/${id}`, { method: 'DELETE' });
         await refresh();
+        toast.add({
+            title: 'Invoice deleted',
+            description: 'The invoice has been deleted successfully.',
+            color: 'success',
+        });
     } catch (error: any) {
-        alert(error.data?.message || 'Failed to delete invoice');
+        toast.add({
+            title: 'Error',
+            description: error.data?.message || 'Failed to delete invoice',
+            color: 'error',
+        });
     }
 };
+
+function getRowItems(row: any) {
+    return [
+        {
+            type: 'label',
+            label: 'Actions',
+        },
+        {
+            label: 'View invoice',
+            icon: 'i-lucide-eye',
+            to: `/invoices/${row.id}`,
+        },
+        {
+            type: 'separator',
+        },
+        {
+            label: 'Delete invoice',
+            icon: 'i-lucide-trash',
+            color: 'error',
+            onSelect() {
+                deleteInvoice(row.id);
+            },
+        },
+    ];
+}
 </script>
 
 <template>
-    <div>
-        <div class="flex justify-between items-center mb-8">
-            <div>
-                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Invoices</h1>
-                <p class="text-gray-500 mt-2">Manage your invoices</p>
-            </div>
-            <UButton icon="i-heroicons-plus" to="/invoices/new">New Invoice</UButton>
-        </div>
+    <UDashboardPanel id="invoices">
+        <template #header>
+            <UDashboardNavbar title="Invoices">
+                <template #leading>
+                    <UDashboardSidebarCollapse />
+                </template>
 
-        <UCard class="mb-6">
-            <template #header>
-                <h3 class="font-semibold">Filters</h3>
-            </template>
+                <template #right>
+                    <UButton icon="i-lucide-plus" to="/invoices/new" size="md" class="rounded-full" />
+                </template>
+            </UDashboardNavbar>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <UFormField label="Client">
-                    <USelect v-model="filters.clientId" :options="clientOptions" />
-                </UFormField>
+            <UDashboardToolbar>
+                <UInput
+                    v-model="filters.clientId"
+                    icon="i-lucide-search"
+                    placeholder="Filter by client..."
+                    class="max-w-sm"
+                />
 
-                <UFormField label="Status">
-                    <USelect v-model="filters.status" :options="statusOptions" />
-                </UFormField>
+                <USelect v-model="filters.status" :options="statusOptions" placeholder="Filter by status" />
 
-                <UFormField label="From Date">
-                    <UInput v-model="filters.dateFrom" type="date" />
-                </UFormField>
+                <UInput v-model="filters.dateFrom" type="date" placeholder="From date" />
 
-                <UFormField label="To Date">
-                    <UInput v-model="filters.dateTo" type="date" />
-                </UFormField>
-            </div>
-        </UCard>
+                <UInput v-model="filters.dateTo" type="date" placeholder="To date" />
+            </UDashboardToolbar>
+        </template>
 
-        <UCard>
+        <template #body>
             <UTable
                 :rows="invoices || []"
                 :columns="[
@@ -106,8 +140,17 @@ const deleteInvoice = async (id: number) => {
                     { key: 'status', label: 'Status', id: 'status' },
                     { key: 'issueDate', label: 'Issue Date', id: 'issueDate' },
                     { key: 'dueDate', label: 'Due Date', id: 'dueDate' },
-                    { key: 'actions', label: 'Actions', id: 'actions', class: 'text-right' },
+                    { key: 'actions', label: 'Actions', id: 'actions' },
                 ]"
+                :loading="loadingStatus === 'pending'"
+                :ui="{
+                    base: 'table-fixed border-separate border-spacing-0',
+                    thead: '[&>tr]:bg-elevated/50 [&>tr]:after:content-none',
+                    tbody: '[&>tr]:last:[&>td]:border-b-0',
+                    th: 'py-2 first:rounded-l-lg last:rounded-r-lg border-y border-default first:border-l last:border-r',
+                    td: 'border-b border-default',
+                    separator: 'h-0',
+                }"
             >
                 <template #id-data="{ row }">
                     <NuxtLink :to="`/invoices/${row.id}`" class="font-mono text-primary-500 hover:underline">
@@ -120,7 +163,7 @@ const deleteInvoice = async (id: number) => {
                 </template>
 
                 <template #status-data="{ row }">
-                    <UBadge :color="getStatusColor(row.status)" variant="soft">
+                    <UBadge :color="getStatusColor(row.status)" variant="subtle" class="capitalize">
                         {{ row.status }}
                     </UBadge>
                 </template>
@@ -134,18 +177,18 @@ const deleteInvoice = async (id: number) => {
                 </template>
 
                 <template #actions-data="{ row }">
-                    <div class="flex gap-2 justify-end">
-                        <UButton icon="i-heroicons-eye" variant="ghost" size="sm" :to="`/invoices/${row.id}`" />
-                        <UButton
-                            icon="i-heroicons-trash"
-                            variant="ghost"
-                            size="sm"
-                            color="red"
-                            @click="deleteInvoice(row.id)"
-                        />
+                    <div class="text-right">
+                        <UDropdownMenu
+                            :items="getRowItems(row)"
+                            :content="{
+                                align: 'end',
+                            }"
+                        >
+                            <UButton icon="i-lucide-ellipsis-vertical" color="neutral" variant="ghost" />
+                        </UDropdownMenu>
                     </div>
                 </template>
             </UTable>
-        </UCard>
-    </div>
+        </template>
+    </UDashboardPanel>
 </template>

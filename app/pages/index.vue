@@ -3,7 +3,7 @@ definePageMeta({
     middleware: ['auth'],
 });
 
-const { data: stats, refresh, error } = await useFetch('/api/dashboard/stats');
+const { data: stats } = await useFetch('/api/dashboard/stats');
 
 const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('pt-BR', {
@@ -18,114 +18,133 @@ const formatDate = (date: string) => {
 
 const getStatusColor = (status: string) => {
     const colors: Record<string, string> = {
-        pending: 'yellow',
-        paid: 'green',
-        overdue: 'red',
-        cancelled: 'gray',
+        draft: 'warning',
+        sent: 'info',
+        paid: 'success',
+        cancelled: 'error',
     };
-    return colors[status] || 'gray';
+    return colors[status] || 'neutral';
 };
+
+const items = [
+    [
+        {
+            label: 'New invoice',
+            icon: 'i-lucide-file-plus',
+            to: '/invoices/new',
+        },
+        {
+            label: 'New client',
+            icon: 'i-lucide-user-plus',
+            to: '/clients',
+        },
+    ],
+];
 </script>
 
 <template>
-    <div>
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
-            <p class="text-gray-500 mt-2">Overview of your invoices and clients</p>
-        </div>
-
-        <UAlert
-            v-if="error"
-            color="red"
-            variant="soft"
-            title="Failed to load dashboard data"
-            :description="'Please refresh the page or try again later'"
-            :close-button="{ icon: 'i-heroicons-x-mark-20-solid', color: 'red', variant: 'link' }"
-            class="mb-6"
-        />
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <UCard>
-                <template #header>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm font-medium text-gray-500">Total Clients</span>
-                        <UIcon name="i-heroicons-users" class="text-primary-500" />
-                    </div>
+    <UDashboardPanel id="home">
+        <template #header>
+            <UDashboardNavbar title="Dashboard">
+                <template #leading>
+                    <UDashboardSidebarCollapse />
                 </template>
-                <div class="text-2xl font-bold">{{ stats?.totalClients || 0 }}</div>
-            </UCard>
 
-            <UCard>
-                <template #header>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm font-medium text-gray-500">Total Invoices</span>
-                        <UIcon name="i-heroicons-document-text" class="text-blue-500" />
-                    </div>
+                <template #right>
+                    <UDropdownMenu :items="items">
+                        <UButton icon="i-lucide-plus" size="md" class="rounded-full" />
+                    </UDropdownMenu>
                 </template>
-                <div class="text-2xl font-bold">{{ stats?.totalInvoices || 0 }}</div>
-                <div class="text-sm text-gray-500 mt-2">
-                    <span class="text-yellow-600">{{ stats?.pendingInvoices || 0 }} pending</span>
-                    ·
-                    <span class="text-green-600">{{ stats?.paidInvoices || 0 }} paid</span>
-                </div>
-            </UCard>
+            </UDashboardNavbar>
+        </template>
 
-            <UCard>
-                <template #header>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm font-medium text-gray-500">Total Revenue</span>
-                        <UIcon name="i-heroicons-currency-dollar" class="text-green-500" />
-                    </div>
-                </template>
-                <div class="text-2xl font-bold">{{ formatCurrency(stats?.totalRevenue || 0) }}</div>
-                <div class="text-sm text-green-600 mt-2">From paid invoices</div>
-            </UCard>
+        <template #body>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <UCard class="col-span-1">
+                    <template #header>
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-semibold text-muted">Total Invoices</h3>
+                            <UIcon name="i-lucide-file-text" class="w-5 h-5 text-primary" />
+                        </div>
+                    </template>
+                    <div class="text-3xl font-bold">{{ stats?.totalInvoices || 0 }}</div>
+                    <p class="text-sm text-muted mt-2">
+                        <span class="text-warning">{{ stats?.pendingInvoices || 0 }} pending</span>
+                        ·
+                        <span class="text-success">{{ stats?.paidInvoices || 0 }} paid</span>
+                    </p>
+                </UCard>
 
-            <UCard>
-                <template #header>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm font-medium text-gray-500">Pending Revenue</span>
-                        <UIcon name="i-heroicons-clock" class="text-yellow-500" />
-                    </div>
-                </template>
-                <div class="text-2xl font-bold">{{ formatCurrency(stats?.pendingRevenue || 0) }}</div>
-                <div class="text-sm text-yellow-600 mt-2">Awaiting payment</div>
-            </UCard>
-        </div>
+                <UCard class="col-span-1">
+                    <template #header>
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-semibold text-muted">Total Revenue</h3>
+                            <UIcon name="i-lucide-dollar-sign" class="w-5 h-5 text-success" />
+                        </div>
+                    </template>
+                    <div class="text-3xl font-bold">{{ formatCurrency(stats?.totalRevenue || 0) }}</div>
+                    <p class="text-sm text-success mt-2">From paid invoices</p>
+                </UCard>
 
-        <UCard>
-            <template #header>
-                <h2 class="text-lg font-semibold">Recent Invoices</h2>
-            </template>
+                <UCard class="col-span-1">
+                    <template #header>
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-semibold text-muted">Active Clients</h3>
+                            <UIcon name="i-lucide-users" class="w-5 h-5 text-info" />
+                        </div>
+                    </template>
+                    <div class="text-3xl font-bold">{{ stats?.totalClients || 0 }}</div>
+                    <p class="text-sm text-muted mt-2">Registered clients</p>
+                </UCard>
 
-            <div
-                v-if="!stats?.recentInvoices || stats.recentInvoices.length === 0"
-                class="text-center py-8 text-gray-500"
-            >
-                No recent invoices
+                <UCard class="col-span-1">
+                    <template #header>
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-semibold text-muted">Pending Revenue</h3>
+                            <UIcon name="i-lucide-clock" class="w-5 h-5 text-warning" />
+                        </div>
+                    </template>
+                    <div class="text-3xl font-bold">{{ formatCurrency(stats?.pendingRevenue || 0) }}</div>
+                    <p class="text-sm text-warning mt-2">Awaiting payment</p>
+                </UCard>
             </div>
 
-            <div v-else class="space-y-3">
+            <UCard>
+                <template #header>
+                    <h3 class="font-semibold">Recent Invoices</h3>
+                </template>
+
                 <div
-                    v-for="invoice in stats.recentInvoices"
-                    :key="invoice.id"
-                    class="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"
+                    v-if="!stats?.recentInvoices || stats.recentInvoices.length === 0"
+                    class="text-center py-8 text-muted"
                 >
-                    <div>
-                        <p class="font-mono font-semibold">C{{ invoice.clientId }}-{{ invoice.sequentialNumber }}</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">{{ invoice.client.name }}</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="font-semibold">{{ formatCurrency(Number(invoice.total)) }}</p>
-                        <div class="flex items-center gap-2 justify-end mt-1">
-                            <UBadge :color="getStatusColor(invoice.status)" variant="soft">
-                                {{ invoice.status }}
-                            </UBadge>
-                            <span class="text-xs text-gray-500">{{ formatDate(invoice.issueDate) }}</span>
+                    No recent invoices
+                </div>
+
+                <div v-else class="space-y-3">
+                    <div
+                        v-for="invoice in stats.recentInvoices"
+                        :key="invoice.id"
+                        class="flex items-center justify-between p-4 border border-default rounded-lg hover:bg-elevated/25 transition-colors"
+                    >
+                        <div>
+                            <p class="font-mono font-semibold">
+                                C{{ invoice.clientId }}-{{ invoice.sequentialNumber }}
+                            </p>
+                            <p class="text-sm text-muted">{{ invoice.client.name }}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-semibold">{{ formatCurrency(Number(invoice.total)) }}</p>
+                            <div class="flex items-center gap-2 justify-end mt-1">
+                                <UBadge :color="getStatusColor(invoice.status)" variant="subtle" class="capitalize">
+                                    {{ invoice.status }}
+                                </UBadge>
+                                <span class="text-xs text-muted">{{ formatDate(invoice.issueDate) }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </UCard>
-    </div>
+            </UCard>
+        </template>
+    </UDashboardPanel>
 </template>
