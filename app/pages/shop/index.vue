@@ -91,6 +91,8 @@
 </template>
 
 <script setup lang="ts">
+import type { SelectItem } from '@nuxt/ui';
+
 const { locale, t } = useI18n();
 
 const categories = await import('~/data/shop-categories.json').then((m) => m.default);

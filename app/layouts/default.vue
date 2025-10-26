@@ -5,56 +5,91 @@ const route = useRoute();
 
 const open = ref(false);
 
-const links = [
-    [
-        {
-            label: 'Dashboard',
-            icon: 'i-lucide-home',
-            to: '/',
-            onSelect: () => {
-                open.value = false;
-            },
-        },
-        {
-            label: 'Invoices',
-            icon: 'i-lucide-file-text',
-            to: '/invoices',
-            onSelect: () => {
-                open.value = false;
-            },
-        },
-        {
-            label: 'Clients',
-            icon: 'i-lucide-users',
-            to: '/clients',
-            onSelect: () => {
-                open.value = false;
-            },
-        },
-    ],
-    [
-        {
-            label: 'Privacy Policy',
-            icon: 'i-lucide-shield',
-            to: '/privacy',
-            onSelect: () => {
-                open.value = false;
-            },
-        },
-        {
-            label: 'Help & Support',
-            icon: 'i-lucide-info',
-            to: 'https://github.com/nuxt-ui-templates/dashboard',
-            target: '_blank',
-        },
-    ],
-] satisfies NavigationMenuItem[][];
+const config = useRuntimeConfig();
+const waSettings = computed(() => config.public.waSettings);
+const phoneNumber = computed(() => {
+    let _number = String(waSettings.value?.phoneNumber || '+55 11 4003-0101')?.trim();
+    return _number ? '+' + _number?.replaceAll(/\D+/gi, '') || '' : '';
+});
+
+let currentUrl = ref<any>(route?.path || null);
+
+onMounted(() => {
+    if (import.meta.client || typeof window !== 'undefined') {
+        let lc = window?.location;
+        currentUrl.value = lc.protocol + '//' + lc.host + lc.pathname;
+    }
+});
+
+const helpLink = computed(() => {
+    let _number = '+551140030101';
+
+    let _currentUrl = currentUrl.value || '';
+
+    if ((!_currentUrl || _currentUrl?.startsWith('/')) && (import.meta.client || typeof window !== 'undefined')) {
+        let lc = window?.location || null;
+        _currentUrl = lc ? lc?.protocol + '//' + lc?.host + lc.pathname : _currentUrl;
+    }
+
+    let _helpInitialMessage = encodeURI(`Preciso de ajuda.` + (_currentUrl ? ` \nSource: ${_currentUrl}` : ''));
+    return `https://wa.me/${_number}?text=${_helpInitialMessage}`;
+});
+
+const links = computed<NavigationMenuItem[][]>(
+    () =>
+        [
+            [
+                {
+                    label: 'Dashboard',
+                    icon: 'i-lucide-home',
+                    to: '/',
+                    onSelect: () => {
+                        open.value = false;
+                    },
+                },
+                {
+                    label: 'Invoices',
+                    icon: 'i-lucide-file-text',
+                    to: '/invoices',
+                    onSelect: () => {
+                        open.value = false;
+                    },
+                },
+                {
+                    label: 'Clients',
+                    icon: 'i-lucide-users',
+                    to: '/clients',
+                    onSelect: () => {
+                        open.value = false;
+                    },
+                },
+            ],
+            [
+                {
+                    label: 'Privacy Policy',
+                    icon: 'i-lucide-shield',
+                    to: '/privacy',
+                    onSelect: () => {
+                        open.value = false;
+                    },
+                },
+                {
+                    label: 'Help & Support',
+                    icon: 'i-lucide-info',
+                    get to() {
+                        return helpLink.value;
+                    },
+                    target: '_blank',
+                },
+            ],
+        ] satisfies NavigationMenuItem[][]
+);
 
 const groups = computed(() => [
     {
         id: 'links',
         label: 'Go to',
-        items: links.flat(),
+        items: links.value?.flat(),
     },
 ]);
 </script>

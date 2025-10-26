@@ -1,9 +1,35 @@
 <script setup lang="ts">
+import type { SelectItem } from '@nuxt/ui';
+
 definePageMeta({
     middleware: ['auth'],
 });
 
 const { data: clients } = await useFetch('/api/clients');
+
+interface UnityType {
+    label: string;
+    value: string;
+}
+
+const unityTypes = ref<SelectItem[]>([
+    { label: 'hour', value: 'Hour' },
+    { label: 'day', value: 'Day' },
+    { label: 'week', value: 'Week' },
+    { label: 'month', value: 'Month' },
+    { label: 'year', value: 'Year' },
+    { label: 'minute', value: 'Minute' },
+    { label: 'license', value: 'License' },
+    { label: 'subscription', value: 'Subscription' },
+    { label: 'project', value: 'Project' },
+    { label: 'seat', value: 'Seat' },
+    { label: 'task', value: 'Task' },
+    { label: 'session', value: 'Session' },
+    { label: 'user', value: 'User' },
+    { label: 'Other', value: 'other' },
+]);
+
+const unityType = ref(null);
 
 const form = reactive({
     clientId: null as number | null,
@@ -90,6 +116,10 @@ const save = async () => {
     }
 };
 
+const selectAClient = () => {
+    //
+};
+
 // Set default due date (5 days from now)
 onMounted(() => {
     const date = new Date();
@@ -99,46 +129,63 @@ onMounted(() => {
 </script>
 
 <template>
-    <div>
+    <div class="w-full md:pb-12 overflow-y-auto">
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-gray-900 dark:text-white">New Invoice</h1>
             <p class="text-gray-500 mt-2">Create a new invoice</p>
         </div>
 
-        <form @submit.prevent="save" class="space-y-6">
-            <UCard>
+        <form @submit.prevent="save" class="space-y-6 w-full md:w-10/12 mx-auto">
+            <UCard class="w-full">
                 <template #header>
                     <h3 class="font-semibold">Invoice Information</h3>
                 </template>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <UFormField label="Client" required>
-                        <USelect v-model="form.clientId" :options="clientOptions" />
+                        <UFieldGroup class="w-full">
+                            <USelect
+                                icon="i-lucide-user"
+                                placeholder="Select user"
+                                v-model="form.clientId"
+                                :items="clientOptions"
+                                class="w-full"
+                            />
+                            <UButton
+                                type="button"
+                                icon="i-heroicons-plus"
+                                size="sm"
+                                @click="selectAClient"
+                                class="cursor-pointer"
+                            >
+                                New
+                            </UButton>
+                        </UFieldGroup>
                     </UFormField>
 
                     <UFormField label="Due Date" required>
-                        <UInput v-model="form.dueDate" type="date" />
+                        <UInput v-model="form.dueDate" type="date" class="w-full" />
                     </UFormField>
 
                     <UFormField label="Currency">
-                        <USelect v-model="form.currency" :options="currencyOptions" />
+                        <USelect v-model="form.currency" :items="currencyOptions" class="w-full" />
                     </UFormField>
 
                     <UFormField label="Status">
-                        <USelect v-model="form.status" :options="statusOptions" />
+                        <USelect v-model="form.status" :items="statusOptions" class="w-full" />
                     </UFormField>
 
                     <UFormField label="Discount %">
-                        <UInput v-model.number="form.discountPercent" type="number" min="0" max="100" />
+                        <UInput v-model.number="form.discountPercent" type="number" min="0" max="100" class="w-full" />
                     </UFormField>
 
                     <UFormField label="Tax %">
-                        <UInput v-model.number="form.taxPercent" type="number" min="0" max="100" />
+                        <UInput v-model.number="form.taxPercent" type="number" min="0" max="100" class="w-full" />
                     </UFormField>
                 </div>
 
                 <UFormField label="Notes" class="mt-4">
-                    <UTextarea v-model="form.notes" rows="3" />
+                    <UTextarea v-model="form.notes" rows="3" class="w-full" />
                 </UFormField>
             </UCard>
 
@@ -146,45 +193,73 @@ onMounted(() => {
                 <template #header>
                     <div class="flex justify-between items-center">
                         <h3 class="font-semibold">Line Items</h3>
-                        <UButton type="button" icon="i-heroicons-plus" size="sm" @click="addItem">Add Item</UButton>
+                        <UButton
+                            type="button"
+                            icon="i-heroicons-plus"
+                            size="sm"
+                            class="cursor-pointer"
+                            @click="addItem"
+                        >
+                            Add Item
+                        </UButton>
                     </div>
                 </template>
 
                 <div class="space-y-4">
-                    <div v-for="(item, index) in form.items" :key="index" class="p-4 border rounded-lg">
+                    <div
+                        v-for="(item, index) in form.items"
+                        :key="index"
+                        class="p-4 border dark:border-gray-700 rounded-lg"
+                    >
                         <div class="flex justify-between items-start mb-4">
-                            <h4 class="font-medium">Item {{ index + 1 }}</h4>
+                            <h4 class="font-medium">Item #{{ index + 1 }}</h4>
                             <UButton
-                                v-if="form.items.length > 1"
                                 type="button"
                                 icon="i-heroicons-trash"
                                 size="xs"
                                 color="red"
                                 variant="ghost"
                                 @click="removeItem(index)"
+                                class="cursor-pointer"
                             />
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                            <UFormField label="Description" required class="md:col-span-2">
-                                <UInput v-model="item.description" placeholder="Item description" />
+                            <UFormField label="Description" required class="md:col-span-4">
+                                <UInput v-model="item.description" placeholder="Item description" class="w-full" />
                             </UFormField>
 
                             <UFormField label="Unity" required>
-                                <UInput v-model="item.unity" placeholder="e.g., hour" />
+                                <USelect v-model="form.unity" value-key="value" :items="unityTypes" class="w-full" />
                             </UFormField>
 
                             <UFormField label="Quantity" required>
-                                <UInput v-model.number="item.quantity" type="number" min="0.01" step="0.01" />
+                                <UInput
+                                    v-model.number="item.quantity"
+                                    type="number"
+                                    min="0.01"
+                                    step="0.01"
+                                    class="w-full"
+                                />
                             </UFormField>
 
                             <UFormField label="Unit Price" required>
-                                <UInput v-model.number="item.unitPrice" type="number" min="0" step="0.01" />
+                                <UInput
+                                    v-model.number="item.unitPrice"
+                                    type="number"
+                                    min="0"
+                                    step="0.01"
+                                    class="w-full"
+                                />
                             </UFormField>
 
                             <div class="flex items-end">
-                                <UFormField label="Amount">
-                                    <UInput :model-value="(item.quantity * item.unitPrice).toFixed(2)" disabled />
+                                <UFormField label="Amount" class="w-full">
+                                    <UInput
+                                        :model-value="(item.quantity * item.unitPrice).toFixed(2)"
+                                        disabled
+                                        class="w-full"
+                                    />
                                 </UFormField>
                             </div>
                         </div>
@@ -216,8 +291,13 @@ onMounted(() => {
             <UAlert v-if="error" color="red" variant="soft" :title="error" />
 
             <div class="flex gap-2 justify-end">
-                <UButton type="button" variant="ghost" to="/invoices">Cancel</UButton>
-                <UButton type="submit" :loading="loading" :disabled="!form.clientId || form.items.length === 0">
+                <UButton class="cursor-pointer" type="button" variant="ghost" to="/invoices">Cancel</UButton>
+                <UButton
+                    class="cursor-pointer"
+                    type="submit"
+                    :loading="loading"
+                    :disabled="!form.clientId || form.items.length === 0"
+                >
                     Create Invoice
                 </UButton>
             </div>

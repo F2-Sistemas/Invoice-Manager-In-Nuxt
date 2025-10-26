@@ -46,6 +46,7 @@ const save = async () => {
 </script>
 
 <template>
+    <pre class="mb-8">error: {{ error || '--' }}</pre>
     <form @submit.prevent="save" class="space-y-4">
         <UFormField label="Name" required>
             <UInput v-model="form.name" placeholder="Client name" />
@@ -83,7 +84,7 @@ const save = async () => {
             <UInput v-model="form.phone" placeholder="Phone number" />
         </UFormField>
 
-        <UAlert v-if="error" color="red" variant="soft" :title="error" />
+        <!-- <UAlert v-if="error" color="red" variant="soft" :title="error" /> -->
 
         <div class="flex gap-2 justify-end">
             <UButton type="button" variant="ghost" @click="emit('cancel')">Cancel</UButton>

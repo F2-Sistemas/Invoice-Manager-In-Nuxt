@@ -179,7 +179,7 @@
                                         <UFormField :label="$t('case.scheduleContact.service')" name="service" required>
                                             <USelectMenu
                                                 v-model="scheduleForm.service"
-                                                :options="serviceOptions"
+                                                :items="serviceOptions"
                                                 size="lg"
                                                 :class="['w-full']"
                                                 placeholder="Select a service"
@@ -213,7 +213,7 @@
                                         <UFormField :label="$t('case.scheduleContact.time')" name="preferredTime">
                                             <USelectMenu
                                                 v-model="scheduleForm.preferredTime"
-                                                :options="timeSlots"
+                                                :items="timeSlots"
                                                 size="lg"
                                                 :class="['w-full']"
                                                 placeholder="Select a time"
@@ -235,7 +235,7 @@
                                     <UFormField :label="$t('contact.form.message')" name="message">
                                         <UTextarea
                                             v-model="scheduleForm.message"
-                                            :rows="5"
+                                            rows="5"
                                             size="lg"
                                             :class="['w-full']"
                                             placeholder="Tell us more about your project..."

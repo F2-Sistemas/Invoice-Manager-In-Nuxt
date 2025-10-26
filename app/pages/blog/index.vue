@@ -53,14 +53,14 @@
                     <div class="flex gap-4 w-full md:w-auto">
                         <USelect
                             v-model="selectedCategory"
-                            :options="categoryOptions"
+                            :items="categoryOptions"
                             option-attribute="label"
                             size="md"
                             class="flex-1 md:w-48"
                         />
                         <USelect
                             v-model="selectedTag"
-                            :options="tagOptions"
+                            :items="tagOptions"
                             option-attribute="label"
                             size="md"
                             class="flex-1 md:w-48"
@@ -68,7 +68,7 @@
                     </div>
                     <USelect
                         v-model="sortBy"
-                        :options="sortOptions"
+                        :items="sortOptions"
                         option-attribute="label"
                         size="md"
                         class="w-full md:w-48"

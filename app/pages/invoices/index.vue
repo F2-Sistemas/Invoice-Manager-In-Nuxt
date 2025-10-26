@@ -122,7 +122,7 @@ function getRowItems(row: any) {
                     class="max-w-sm"
                 />
 
-                <USelect v-model="filters.status" :options="statusOptions" placeholder="Filter by status" />
+                <USelect v-model="filters.status" :items="statusOptions" placeholder="Filter by status" />
 
                 <UInput v-model="filters.dateFrom" type="date" placeholder="From date" />
 

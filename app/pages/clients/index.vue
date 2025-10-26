@@ -25,12 +25,19 @@ const filteredClients = computed(() => {
 
 const openCreateDialog = () => {
     editingClient.value = null;
-    isOpen.value = true;
+    // isOpen.value = true;
 };
 
 const openEditDialog = (client: any) => {
     editingClient.value = { ...client };
-    isOpen.value = true;
+    // isOpen.value = true;
+};
+
+const onCancel = (ev: any) => {
+    // isOpen.value = false;
+    if (import.meta.client && !import.meta.env.SSR) {
+        console.log('ev', ev);
+    }
 };
 
 const deleteClient = async (id: number) => {
@@ -152,7 +159,7 @@ function getRowItems(row: any) {
                 </h3>
             </template>
 
-            <ClientForm :client="editingClient" @saved="onSaved" @cancel="isOpen = false" />
+            <ClientForm :client="editingClient" @saved="onSaved" @cancel="onCancel" />
         </UCard>
     </UModal>
 </template>

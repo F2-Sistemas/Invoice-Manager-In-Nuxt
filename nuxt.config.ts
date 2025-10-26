@@ -12,6 +12,11 @@ export default defineNuxtConfig({
 
     runtimeConfig: {
         public: {
+            waSettings: {
+                phoneNumber: String(import.meta.env.WA_PHONE_NUMBER || ''),
+                enabled: Boolean(import.meta.env.WA_BUTTON_ENABLED ?? import.meta.env.WA_PHONE_NUMBER),
+                showHelpLink: Boolean(import.meta.env.WA_SHOW_HELP_LINK),
+            },
             shopEnabled: true, // Set to false to disable shop
             blogEnabled: true, // Set to false to disable blog
         },

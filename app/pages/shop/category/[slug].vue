@@ -28,7 +28,7 @@
                         </h2>
                     </div>
 
-                    <USelectMenu v-model="sortBy" :options="sortOptions" size="lg" class="w-64">
+                    <USelectMenu v-model="sortBy" :items="sortOptions" size="lg" class="w-64">
                         <template #leading>
                             <UIcon name="i-heroicons-adjustments-horizontal" />
                         </template>
