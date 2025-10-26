@@ -5,12 +5,11 @@ definePageMeta({
     middleware: ['auth'],
 });
 
+const router = useRouter();
 const toast = useToast();
 
 const { data: clients, refresh, status: loadingStatus } = await useFetch('/api/clients');
 const search = ref('');
-const isOpen = ref(false);
-const editingClient = ref<any>(null);
 
 const filteredClients = computed(() => {
     if (!search.value) return clients.value || [];
@@ -22,23 +21,6 @@ const filteredClients = computed(() => {
             client.country?.toLowerCase().includes(searchLower)
     );
 });
-
-const openCreateDialog = () => {
-    editingClient.value = null;
-    // isOpen.value = true;
-};
-
-const openEditDialog = (client: any) => {
-    editingClient.value = { ...client };
-    // isOpen.value = true;
-};
-
-const onCancel = (ev: any) => {
-    // isOpen.value = false;
-    if (import.meta.client && !import.meta.env.SSR) {
-        console.log('ev', ev);
-    }
-};
 
 const deleteClient = async (id: number) => {
     try {
@@ -58,11 +40,6 @@ const deleteClient = async (id: number) => {
     }
 };
 
-const onSaved = () => {
-    isOpen.value = false;
-    refresh();
-};
-
 function getRowItems(row: any) {
     return [
         {
@@ -70,10 +47,10 @@ function getRowItems(row: any) {
             label: 'Actions',
         },
         {
-            label: 'Edit client',
-            icon: 'i-lucide-pencil',
+            label: 'View client',
+            icon: 'i-lucide-eye',
             onSelect() {
-                openEditDialog(row);
+                router.push(`/clients/${row.id}`);
             },
         },
         {
@@ -100,7 +77,7 @@ function getRowItems(row: any) {
                 </template>
 
                 <template #right>
-                    <UButton icon="i-lucide-plus" @click="openCreateDialog" size="md" class="rounded-full" />
+                    <UButton icon="i-lucide-plus" :to="'/clients/new'" size="md" class="rounded-full cursor-pointer" />
                 </template>
             </UDashboardNavbar>
 
@@ -150,16 +127,4 @@ function getRowItems(row: any) {
             </UTable>
         </template>
     </UDashboardPanel>
-
-    <UModal v-model="isOpen">
-        <UCard>
-            <template #header>
-                <h3 class="text-lg font-semibold">
-                    {{ editingClient ? 'Edit Client' : 'New Client' }}
-                </h3>
-            </template>
-
-            <ClientForm :client="editingClient" @saved="onSaved" @cancel="onCancel" />
-        </UCard>
-    </UModal>
 </template>
