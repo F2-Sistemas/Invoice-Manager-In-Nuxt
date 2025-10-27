@@ -113,6 +113,21 @@ Follow Nuxt UI's three foundational principles:
     ```vue
     <USelect :items="items" />
     ```
+- value prop that is not an empty string. Example:
+    ```ts
+    import type { SelectItem } from '@nuxt/ui';
+
+    const items: SelectItem[] = [
+        { // Right empty object
+            label: 'All Statuses',
+        },
+        { // Wrong empty object
+            label: 'All Statuses',
+            value: '', // Wrong
+        },
+    ]
+
+    ```
 
 ### DropdownMenu Component
 - **Component Name**: `DropdownMenu` and `DropdownMenuItem` (not `UDropdown`)

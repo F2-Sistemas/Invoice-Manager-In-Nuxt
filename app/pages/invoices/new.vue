@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import type { SelectItem } from '@nuxt/ui';
+
 definePageMeta({
     middleware: ['auth'],
 });
 
 const { data: clients } = await useFetch('/api/clients');
 
-const unityTypes = ref<any[]>([
+const unityTypes = ref<SelectItem[]>([
     { label: 'hour', value: 'Hour' },
     { label: 'day', value: 'Day' },
     { label: 'week', value: 'Week' },

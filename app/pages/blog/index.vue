@@ -93,6 +93,8 @@
 </template>
 
 <script setup lang="ts">
+import type { SelectItem } from '@nuxt/ui';
+
 const { locale } = useI18n();
 const router = useRouter();
 
@@ -104,7 +106,7 @@ const selectedCategory = ref('');
 const selectedTag = ref('');
 const sortBy = ref('newest');
 
-const sortOptions = [
+const sortOptions: SelectItem[] = [
     { label: 'Featured', value: 'featured' },
     { label: 'Newest First', value: 'newest' },
     { label: 'Oldest First', value: 'oldest' },
@@ -112,16 +114,16 @@ const sortOptions = [
     { label: 'Title: Z-A', value: 'titleZA' },
 ];
 
-const categoryOptions = computed(() => [
-    { label: $t('blog.allCategories'), value: '' },
+const categoryOptions = computed<SelectItem[]>(() => [
+    { label: $t('blog.allCategories') },
     ...categories.value.map((cat) => ({
         label: cat.name[locale.value],
         value: cat.slug,
     })),
 ]);
 
-const tagOptions = computed(() => [
-    { label: $t('blog.allTags'), value: '' },
+const tagOptions = computed<SelectItem[]>(() => [
+    { label: $t('blog.allTags') },
     ...tags.value.map((tag) => ({
         label: tag.name,
         value: tag.slug,

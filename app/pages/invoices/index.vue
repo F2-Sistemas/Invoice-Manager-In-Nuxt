@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { DropdownMenuItem } from '@nuxt/ui';
+import type { DropdownMenuItem, SelectItem } from '@nuxt/ui';
 
 definePageMeta({
     middleware: ['auth'],
@@ -45,17 +45,17 @@ const getStatusColor = (status: string) => {
 };
 
 const clientOptions = computed(() => [
-    { label: 'All Clients', value: '' },
+    { label: 'All Clients' },
     ...(clients.value || []).map((c: any) => ({ label: c.name, value: c.id.toString() })),
 ]);
 
-const statusOptions = [
-    { label: 'All Statuses', value: '' },
+const statusOptions = ref<SelectItem[]>([
+    { label: 'All Statuses' },
     { label: 'Draft', value: 'draft' },
     { label: 'Sent', value: 'sent' },
     { label: 'Paid', value: 'paid' },
     { label: 'Cancelled', value: 'cancelled' },
-];
+]);
 
 const deleteInvoice = async (id: number) => {
     try {

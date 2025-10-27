@@ -304,6 +304,8 @@
 <script setup lang="ts">
 import { z } from 'zod';
 
+import type { SelectItem } from '@nuxt/ui';
+
 const route = useRoute();
 const { locale } = useI18n();
 const { t } = useI18n();
@@ -339,7 +341,7 @@ const scheduleForm = ref({
 const isSubmitting = ref(false);
 
 // Service options
-const serviceOptions = [
+const serviceOptions: SelectItem[] = [
     'Branding & Logo Design',
     'Marketing Campaign',
     'Social Media Management',

@@ -71,6 +71,8 @@
 </template>
 
 <script setup lang="ts">
+import type { SelectItem } from '@nuxt/ui';
+
 const route = useRoute();
 const { locale, t } = useI18n();
 
@@ -87,7 +89,7 @@ const categoryProducts = computed(() => {
 
 const sortBy = ref('featured');
 
-const sortOptions = computed(() => [
+const sortOptions = computed<SelectItem[]>(() => [
     { label: t('shop.sort.featured'), value: 'featured' },
     { label: t('shop.sort.priceLow'), value: 'price-low' },
     { label: t('shop.sort.priceHigh'), value: 'price-high' },
